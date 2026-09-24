@@ -10,6 +10,15 @@ export const siteConfig = {
     "Most of what I build comes back to the same constraint: how much can you actually verify about a system's behavior, especially when you don't control every layer of it — a network you can only passively observe, a process you don't want to trust just because it's running as root, traffic you need to police without decrypting it. ODIN, the eBPF endpoint security project, and the application firewall are all different angles on that.",
   ],
   now: "Researching city-level IP geolocation at CAIR, DRDO (through December 2026), and building out the eBPF/XDP kernel security project in whatever time is left over.",
+  location: "Coimbatore, India",
+  openTo: "Open to Software Engineering, Cybersecurity & Research opportunities",
+  education: {
+    degree: "B.E. Computer Science & Engineering",
+    specialization: "Cyber Security",
+    institution: "Sri Krishna College of Engineering and Technology, Coimbatore",
+    graduation: "2027",
+    focus: "Cybersecurity · Software Engineering · Research",
+  },
   email: "vsudhareshan@gmail.com",
   github: "https://github.com/BlackDeath-1708",
   linkedin: "https://linkedin.com/in/sudhareshan-v-b99733144",
@@ -18,6 +27,7 @@ export const siteConfig = {
   nav: [
     { label: "Home", href: "/" },
     { label: "Work", href: "/work" },
+    { label: "Research", href: "/research" },
     { label: "Writing", href: "/writing" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },

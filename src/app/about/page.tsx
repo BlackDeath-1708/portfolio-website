@@ -77,6 +77,46 @@ export default function AboutPage() {
 
       <Reveal className="mt-20">
         <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50">
+          Education
+        </h2>
+        <div className="mt-8 grid gap-x-8 gap-y-4 rounded-lg border border-black/10 p-6 sm:grid-cols-2 dark:border-white/10">
+          <div>
+            <p className="font-mono text-xs uppercase tracking-widest text-foreground/40">
+              Degree
+            </p>
+            <p className="mt-1 text-sm text-foreground/80">{siteConfig.education.degree}</p>
+          </div>
+          <div>
+            <p className="font-mono text-xs uppercase tracking-widest text-foreground/40">
+              Specialization
+            </p>
+            <p className="mt-1 text-sm text-foreground/80">
+              {siteConfig.education.specialization}
+            </p>
+          </div>
+          <div>
+            <p className="font-mono text-xs uppercase tracking-widest text-foreground/40">
+              Institution
+            </p>
+            <p className="mt-1 text-sm text-foreground/80">{siteConfig.education.institution}</p>
+          </div>
+          <div>
+            <p className="font-mono text-xs uppercase tracking-widest text-foreground/40">
+              Graduation
+            </p>
+            <p className="mt-1 text-sm text-foreground/80">{siteConfig.education.graduation}</p>
+          </div>
+          <div className="sm:col-span-2">
+            <p className="font-mono text-xs uppercase tracking-widest text-foreground/40">
+              Focus
+            </p>
+            <p className="mt-1 text-sm text-foreground/80">{siteConfig.education.focus}</p>
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal className="mt-20">
+        <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50">
           Achievements
         </h2>
         <ul className="mt-8 flex flex-col gap-4">

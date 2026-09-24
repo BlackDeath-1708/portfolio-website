@@ -8,8 +8,9 @@ import { posts } from "@/lib/writing";
 
 const stats = [
   { value: String(projects.length), label: "Projects shipped" },
-  { value: String(achievements.length), label: "Hackathon results" },
   { value: String(experience.length), label: "Professional roles" },
+  { value: String(achievements.length), label: "Hackathon results" },
+  { value: siteConfig.education.graduation, label: "Graduation" },
 ];
 
 export default function Home() {
@@ -33,8 +34,11 @@ export default function Home() {
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/70">
             {siteConfig.tagline}
           </p>
+          <p className="mt-3 font-mono text-xs text-foreground/40">
+            {siteConfig.location} · {siteConfig.openTo}
+          </p>
 
-          <div className="mt-10 flex flex-wrap gap-4 text-sm font-medium">
+          <div className="mt-8 flex flex-wrap gap-4 text-sm font-medium">
             <Link
               href="/work"
               className="rounded-full bg-accent px-5 py-2.5 text-accent-foreground transition-opacity hover:opacity-90"
@@ -58,7 +62,7 @@ export default function Home() {
         </div>
 
         <div className="relative border-t border-black/10 dark:border-white/10">
-          <div className="mx-auto grid max-w-5xl grid-cols-3 divide-x divide-black/10 px-6 dark:divide-white/10">
+          <div className="mx-auto grid max-w-5xl grid-cols-2 divide-x divide-y divide-black/10 px-6 sm:grid-cols-4 sm:divide-y-0 dark:divide-white/10">
             {stats.map((stat) => (
               <div key={stat.label} className="py-6 text-center sm:text-left sm:px-2">
                 <p className="font-mono text-3xl font-bold text-accent sm:text-4xl">

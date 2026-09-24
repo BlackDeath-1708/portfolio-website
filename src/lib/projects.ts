@@ -5,15 +5,19 @@ export type CaseStudy = {
   result: string;
 };
 
+export type Category = "Cybersecurity" | "Software Engineering";
+
 export type Project = {
   slug: string;
   title: string;
   summary: string;
   description: string;
   stack: string[];
+  category: Category;
   repoUrl?: string;
   featured: boolean;
   caseStudy?: CaseStudy;
+  architecture?: string[];
 };
 
 export const projects: Project[] = [
@@ -25,8 +29,18 @@ export const projects: Project[] = [
     description:
       "A threat-detection system for one-way mirrored network traffic: Zeek parses raw packets into structured logs, Kafka streams them to six threat detectors covering DDoS, C2 beaconing, DGA/DNS tunnelling, TLS-wrapped malware, reconnaissance, and data exfiltration, a correlation engine aggregates findings, and a Flask API streams results live via SSE to a React dashboard — all running on Docker Compose. Raised pipeline throughput 4.74× by micro-batching inference, and diagnosed a Zeek log join bug that had silently disabled TLS detection.",
     stack: ["Python", "Zeek", "Kafka", "Flask", "React", "Docker"],
+    category: "Cybersecurity",
     repoUrl: "https://github.com/BlackDeath-1708/ODIN-King-of-Analysis",
     featured: true,
+    architecture: [
+      "Mirrored traffic",
+      "Zeek (conn / dns / ssl logs)",
+      "Kafka",
+      "6 threat detectors",
+      "Correlation engine",
+      "Flask API (live SSE)",
+      "React dashboard",
+    ],
     caseStudy: {
       problem:
         "Security teams monitoring critical infrastructure often only get a one-way mirror of traffic — a passive tap or data diode with no return path into the network being observed. That's the exact constraint the underlying problem statement (built for Smart India Hackathon) poses: catch six distinct attack classes — DDoS, C2 beaconing, DGA/DNS tunnelling, TLS-wrapped malware, reconnaissance, and data exfiltration — from that vantage point alone, in real time.",
@@ -46,6 +60,7 @@ export const projects: Project[] = [
     description:
       "A Chrome extension with a Django backend that runs 9 client-side security checks per page, including missing security headers, mixed content, weak cookie flags, open redirects, and outdated JS libraries. Assigns a severity level and remediation steps to every finding; containerized with Docker and deployed on Render.",
     stack: ["Python", "Django", "JavaScript", "Chrome Extension APIs", "Docker"],
+    category: "Cybersecurity",
     repoUrl: "https://github.com/BlackDeath-1708/phishguard",
     featured: true,
     caseStudy: {
@@ -67,6 +82,7 @@ export const projects: Project[] = [
     description:
       "A host-based firewall that maps each outgoing connection to its originating process via /proc and netlink sockets, with a rule-based allow/deny/throttle policy engine. Includes a Flask REST management console for multi-endpoint administration, traffic logging, and alerts, and enforces policy on encrypted traffic using TLS metadata (JA3, SNI) rather than decryption.",
     stack: ["Python", "Flask", "Linux", "iptables", "NFQUEUE"],
+    category: "Cybersecurity",
     featured: false,
   },
   {
@@ -77,6 +93,7 @@ export const projects: Project[] = [
     description:
       "A self-initiated, ongoing project writing eBPF programs at the XDP hook for line-rate in-kernel packet classification, and BPF-LSM hooks for per-process network access control that resists root bypass. Includes a telemetry pipeline streaming events from the eBPF programs to a userspace daemon through shared-memory ring buffers.",
     stack: ["C", "eBPF", "XDP", "BPF-LSM"],
+    category: "Cybersecurity",
     featured: false,
   },
   {
@@ -87,6 +104,7 @@ export const projects: Project[] = [
     description:
       "Built for the Rajasthan Police Hackathon (National Level), where it placed in the Top 5: extracts URL/domain features (IP-in-URL, domain age, redirect patterns, and more) to feed a trained classifier that flags phishing links, then cross-references suspicious URLs against the VirusTotal API before rendering a verdict through a Flask web UI.",
     stack: ["Python", "Flask", "scikit-learn", "VirusTotal API"],
+    category: "Cybersecurity",
     repoUrl: "https://github.com/BlackDeath-1708/RJPOLICE_HACK_1251_OMEGA_5",
     featured: true,
   },
@@ -98,6 +116,7 @@ export const projects: Project[] = [
     description:
       "A hands-on implementation of a secure communication stack on Kali Linux using OpenSSL: AES-256 symmetric encryption, RSA-2048 asymmetric encryption, SHA-256 integrity hashing, RSA+SHA-256 digital signatures, a full PKI (CA + server certificates), and a TLS client-server channel. Validated with real failure-mode testing — wrong keys fail decryption, tampered data fails hash checks, untrusted certs fail the TLS handshake.",
     stack: ["OpenSSL", "Kali Linux", "SSL/TLS", "PKI"],
+    category: "Cybersecurity",
     repoUrl:
       "https://github.com/BlackDeath-1708/SECURE-DATA-EXCHANGE-USING-CRYPTOGRAPHIC-TECHNIQUES",
     featured: false,
@@ -110,6 +129,7 @@ export const projects: Project[] = [
     description:
       "A complete e-commerce build with an Express/MongoDB backend (JWT auth, Multer file uploads) serving a React storefront and a dedicated React admin panel for managing products and orders.",
     stack: ["React", "Node.js", "Express", "MongoDB", "JWT"],
+    category: "Software Engineering",
     repoUrl: "https://github.com/BlackDeath-1708/E-COMMERCE",
     featured: false,
   },
