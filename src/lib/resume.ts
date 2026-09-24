@@ -35,15 +35,16 @@ export const achievements: string[] = [
 ];
 
 export const skills = {
-  Languages: ["Python", "Java", "JavaScript", "C", "Bash"],
-  "Backend & Platforms": [
+  Development: [
+    "Python",
+    "Java",
+    "JavaScript",
+    "C",
+    "Bash",
     "MERN (MongoDB, Express, React, Node.js)",
     "Flask (REST APIs)",
     "Django",
     "Streamlit",
-    "Kafka",
-    "AWS",
-    "Linux",
     "Docker",
   ],
   "Systems & Networking": [
@@ -53,6 +54,9 @@ export const skills = {
     "/proc",
     "TCP/IP",
     "TLS",
+    "Kafka",
+    "AWS",
+    "Linux",
   ],
   "Security & Identity": [
     "SIEM (Wazuh)",
