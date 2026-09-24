@@ -18,7 +18,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: project?.title ?? "Project not found" };
 }
 
-export default async function ProjectDetailPage({ params }: Props) {
+const caseStudySections = [
+  { key: "problem", label: "The problem" },
+  { key: "approach", label: "Approach" },
+  { key: "challenge", label: "The hard part" },
+  { key: "result", label: "Result" },
+] as const;
+
+export default async function WorkDetailPage({ params }: Props) {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
 
@@ -29,10 +36,10 @@ export default async function ProjectDetailPage({ params }: Props) {
   return (
     <div className="mx-auto max-w-3xl px-6 py-20">
       <Link
-        href="/projects"
+        href="/work"
         className="font-mono text-xs uppercase tracking-widest text-foreground/50 transition-colors hover:text-accent"
       >
-        ← All projects
+        ← All work
       </Link>
 
       <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
@@ -48,9 +55,24 @@ export default async function ProjectDetailPage({ params }: Props) {
         ))}
       </ul>
 
-      <p className="mt-10 max-w-2xl text-base leading-relaxed text-foreground/80">
-        {project.description}
-      </p>
+      {project.caseStudy ? (
+        <div className="mt-10 flex flex-col gap-10">
+          {caseStudySections.map(({ key, label }) => (
+            <div key={key}>
+              <h2 className="font-mono text-xs uppercase tracking-widest text-accent">
+                {label}
+              </h2>
+              <p className="mt-3 max-w-2xl text-base leading-relaxed text-foreground/80">
+                {project.caseStudy![key]}
+              </p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="mt-10 max-w-2xl text-base leading-relaxed text-foreground/80">
+          {project.description}
+        </p>
+      )}
 
       {project.repoUrl ? (
         <a

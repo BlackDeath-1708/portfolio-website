@@ -4,15 +4,16 @@ import { Reveal } from "@/components/Reveal";
 import { achievements, experience } from "@/lib/resume";
 import { projects } from "@/lib/projects";
 import { siteConfig } from "@/lib/site-config";
+import { posts } from "@/lib/writing";
 
 const stats = [
-  { value: String(projects.filter((p) => p.featured).length), label: "Featured projects" },
+  { value: String(projects.length), label: "Projects shipped" },
   { value: String(achievements.length), label: "Hackathon results" },
   { value: String(experience.length), label: "Professional roles" },
 ];
 
 export default function Home() {
-  const featured = projects.filter((project) => project.featured);
+  const highlights = projects.filter((project) => project.featured);
 
   return (
     <div>
@@ -35,10 +36,10 @@ export default function Home() {
 
           <div className="mt-10 flex flex-wrap gap-4 text-sm font-medium">
             <Link
-              href="/projects"
+              href="/work"
               className="rounded-full bg-accent px-5 py-2.5 text-accent-foreground transition-opacity hover:opacity-90"
             >
-              View projects
+              View work
             </Link>
             <Link
               href="/contact"
@@ -74,17 +75,59 @@ export default function Home() {
 
       <section className="mx-auto max-w-5xl px-6 py-20">
         <Reveal>
-          <div className="flex items-baseline gap-3">
-            <span className="h-px w-8 bg-accent" />
-            <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50">
-              Featured work
-            </h2>
+          <div className="flex items-baseline justify-between gap-3">
+            <div className="flex items-baseline gap-3">
+              <span className="h-px w-8 bg-accent" />
+              <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50">
+                Highlighted work
+              </h2>
+            </div>
+            <Link
+              href="/work"
+              className="font-mono text-xs uppercase tracking-widest text-foreground/50 transition-colors hover:text-accent"
+            >
+              View all →
+            </Link>
           </div>
         </Reveal>
         <div className="mt-6">
-          {featured.map((project, index) => (
+          {highlights.map((project, index) => (
             <Reveal key={project.slug} delay={index * 60}>
               <ProjectCard project={project} index={index} />
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-5xl border-t border-black/10 px-6 py-20 dark:border-white/10">
+        <Reveal>
+          <div className="flex items-baseline justify-between gap-3">
+            <div className="flex items-baseline gap-3">
+              <span className="h-px w-8 bg-accent" />
+              <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50">
+                Recent writing
+              </h2>
+            </div>
+            <Link
+              href="/writing"
+              className="font-mono text-xs uppercase tracking-widest text-foreground/50 transition-colors hover:text-accent"
+            >
+              View all →
+            </Link>
+          </div>
+        </Reveal>
+        <div className="mt-6 grid gap-6 sm:grid-cols-2">
+          {posts.slice(0, 2).map((post, index) => (
+            <Reveal key={post.slug} delay={index * 60}>
+              <Link
+                href={`/writing/${post.slug}`}
+                className="group block rounded-lg border border-black/10 p-5 transition-all hover:border-accent/40 hover:shadow-[0_0_24px_-8px_var(--color-accent)] dark:border-white/10"
+              >
+                <h3 className="font-semibold tracking-tight transition-colors group-hover:text-accent">
+                  {post.title}
+                </h3>
+                <p className="mt-2 text-sm text-foreground/60">{post.excerpt}</p>
+              </Link>
             </Reveal>
           ))}
         </div>

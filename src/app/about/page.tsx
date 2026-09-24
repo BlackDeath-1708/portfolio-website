@@ -17,9 +17,20 @@ export default function AboutPage() {
           About
         </h1>
       </div>
-      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-foreground/80">
-        {siteConfig.bio}
-      </p>
+      <div className="mt-6 flex max-w-2xl flex-col gap-5 text-lg leading-relaxed text-foreground/80">
+        {siteConfig.narrative.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+      </div>
+
+      <Reveal className="mt-16">
+        <div className="flex items-center gap-3 rounded-lg border border-black/10 px-5 py-4 dark:border-white/10">
+          <span className="status-dot shrink-0" />
+          <p className="font-mono text-xs text-foreground/60 sm:text-sm">
+            <span className="text-accent">Now —</span> {siteConfig.now}
+          </p>
+        </div>
+      </Reveal>
 
       <Reveal className="mt-20">
         <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50">

@@ -3,7 +3,13 @@ export const siteConfig = {
   title: "Cybersecurity & Systems Engineer",
   tagline:
     "Building backend services, Linux networking tools, and kernel-level (eBPF) security programs.",
-  bio: "Final-year Computer Science (Cyber Security) student who builds backend services, Linux networking tools and kernel-level (eBPF) programs. Research intern at CAIR, DRDO, and former co-founder and CTO of a cybersecurity startup, bringing strong communication, problem-solving and time-management skills from leading delivery and collaborating with client stakeholders.",
+  bio: "Final-year Computer Science (Cyber Security) student who builds backend services, Linux networking tools and kernel-level (eBPF) programs. Research intern at CAIR, DRDO, and former co-founder and CTO of a cybersecurity startup.",
+  narrative: [
+    "I'm a final-year Computer Science (Cyber Security) student, most interested in the layer where operating systems, networks, and security overlap — the gap between what a system is supposed to do and what you can actually verify it's doing.",
+    "That question has taken me in a few directions at once: writing eBPF programs at the XDP hook for in-kernel packet classification, researching IP-level geolocation methods as a research intern at CAIR, DRDO, and — before that — co-founding a cybersecurity startup where I went from writing backend code to deploying SIEM pipelines for enterprise clients as CTO.",
+    "Most of what I build comes back to the same constraint: how much can you actually verify about a system's behavior, especially when you don't control every layer of it — a network you can only passively observe, a process you don't want to trust just because it's running as root, traffic you need to police without decrypting it. ODIN, the eBPF endpoint security project, and the application firewall are all different angles on that.",
+  ],
+  now: "Researching city-level IP geolocation at CAIR, DRDO (through December 2026), and building out the eBPF/XDP kernel security project in whatever time is left over.",
   email: "vsudhareshan@gmail.com",
   github: "https://github.com/BlackDeath-1708",
   linkedin: "https://linkedin.com/in/sudhareshan-v-b99733144",
@@ -11,7 +17,8 @@ export const siteConfig = {
   url: "https://sudhareshan.me",
   nav: [
     { label: "Home", href: "/" },
-    { label: "Projects", href: "/projects" },
+    { label: "Work", href: "/work" },
+    { label: "Writing", href: "/writing" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ],

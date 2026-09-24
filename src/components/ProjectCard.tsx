@@ -10,17 +10,22 @@ type Props = {
 export function ProjectCard({ project, index }: Props) {
   return (
     <Link
-      href={`/projects/${project.slug}`}
+      href={`/work/${project.slug}`}
       className="group flex flex-col gap-3 border-b border-black/10 py-8 transition-colors first:border-t dark:border-white/10 sm:flex-row sm:items-baseline sm:gap-8"
     >
       <span className="font-mono text-sm text-foreground/30 sm:w-10 sm:shrink-0">
         {String(index + 1).padStart(2, "0")}
       </span>
       <div className="flex-1">
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <h3 className="text-lg font-semibold tracking-tight transition-colors group-hover:text-accent sm:text-xl">
             {project.title}
           </h3>
+          {project.caseStudy && (
+            <span className="rounded-full border border-accent/30 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-accent">
+              Case study
+            </span>
+          )}
           <span
             aria-hidden
             className="translate-x-0 text-accent opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100"
