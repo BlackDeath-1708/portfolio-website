@@ -27,15 +27,20 @@ export default async function ProjectDetailPage({ params }: Props) {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
-      <Link href="/projects" className="text-sm text-foreground/60 hover:text-foreground">
+    <div className="mx-auto max-w-3xl px-6 py-20">
+      <Link
+        href="/projects"
+        className="font-mono text-xs uppercase tracking-widest text-foreground/50 transition-colors hover:text-accent"
+      >
         ← All projects
       </Link>
 
-      <h1 className="mt-4 text-2xl font-semibold tracking-tight">{project.title}</h1>
-      <p className="mt-2 text-foreground/70">{project.summary}</p>
+      <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
+        {project.title}
+      </h1>
+      <p className="mt-3 text-lg text-foreground/70">{project.summary}</p>
 
-      <ul className="mt-4 flex flex-wrap gap-2">
+      <ul className="mt-5 flex flex-wrap gap-2">
         {project.stack.map((tech) => (
           <li key={tech}>
             <Badge>{tech}</Badge>
@@ -43,7 +48,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         ))}
       </ul>
 
-      <p className="mt-8 max-w-2xl leading-relaxed text-foreground/80">
+      <p className="mt-10 max-w-2xl text-base leading-relaxed text-foreground/80">
         {project.description}
       </p>
 
@@ -52,12 +57,12 @@ export default async function ProjectDetailPage({ params }: Props) {
           href={project.repoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-block rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
+          className="mt-10 inline-block rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
         >
           View on GitHub
         </a>
       ) : (
-        <p className="mt-8 inline-block rounded-full bg-black/5 px-5 py-2.5 text-sm text-foreground/60 dark:bg-white/10">
+        <p className="mt-10 inline-block rounded-full bg-black/5 px-5 py-2.5 text-sm text-foreground/60 dark:bg-white/10">
           Private repository / in progress
         </p>
       )}

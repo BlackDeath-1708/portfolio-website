@@ -7,14 +7,19 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
-      <h1 className="text-2xl font-semibold tracking-tight">Contact</h1>
-      <p className="mt-4 max-w-xl text-foreground/80">
-        Best way to reach me is email — I&apos;m also on GitHub if you want to see more of my
-        work.
+    <div className="mx-auto max-w-5xl px-6 py-20">
+      <div className="flex items-baseline gap-3">
+        <span className="h-px w-8 bg-accent" />
+        <h1 className="font-mono text-xs uppercase tracking-widest text-foreground/50">
+          Contact
+        </h1>
+      </div>
+      <p className="mt-6 max-w-xl text-2xl leading-snug font-medium tracking-tight sm:text-3xl">
+        Best way to reach me is email — I&apos;m also on GitHub and LinkedIn if you want to see
+        more of my work.
       </p>
 
-      <div className="mt-8 flex flex-col gap-3 text-sm font-medium">
+      <div className="mt-10 flex flex-col gap-3 text-sm font-medium sm:flex-row sm:flex-wrap">
         <a
           href={`mailto:${siteConfig.email}`}
           className="w-fit rounded-full bg-accent px-5 py-2.5 text-accent-foreground transition-opacity hover:opacity-90"

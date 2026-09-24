@@ -5,11 +5,11 @@ export function Footer() {
 
   return (
     <footer className="border-t border-black/10 dark:border-white/10">
-      <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-4 px-6 py-8 text-sm text-foreground/60">
+      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-8 font-mono text-xs text-foreground/50">
         <p>
           © {year} {siteConfig.name}
         </p>
-        <div className="flex gap-4">
+        <div className="flex gap-6">
           <a
             href={siteConfig.github}
             target="_blank"
