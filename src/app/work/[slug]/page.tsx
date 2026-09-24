@@ -74,20 +74,36 @@ export default async function WorkDetailPage({ params }: Props) {
         </p>
       )}
 
-      {project.repoUrl ? (
-        <a
-          href={project.repoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-10 inline-block rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
-        >
-          View on GitHub
-        </a>
-      ) : (
-        <p className="mt-10 inline-block rounded-full bg-black/5 px-5 py-2.5 text-sm text-foreground/60 dark:bg-white/10">
-          Private repository / in progress
-        </p>
-      )}
+      <div className="mt-10 flex flex-wrap gap-3">
+        {project.liveUrl && (
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
+          >
+            Live demo
+          </a>
+        )}
+        {project.repoUrl ? (
+          <a
+            href={project.repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-block rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
+              project.liveUrl
+                ? "border border-black/10 hover:border-accent/40 dark:border-white/10"
+                : "bg-accent text-accent-foreground hover:opacity-90"
+            }`}
+          >
+            View on GitHub
+          </a>
+        ) : (
+          <p className="inline-block rounded-full bg-black/5 px-5 py-2.5 text-sm text-foreground/60 dark:bg-white/10">
+            Private repository / in progress
+          </p>
+        )}
+      </div>
     </div>
   );
 }

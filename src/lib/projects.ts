@@ -15,6 +15,7 @@ export type Project = {
   stack: string[];
   category: Category;
   repoUrl?: string;
+  liveUrl?: string;
   featured: boolean;
   caseStudy?: CaseStudy;
   architecture?: string[];
@@ -143,6 +144,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "TypeScript", "Socket.io", "Node.js", "Tailwind CSS"],
     category: "Software Engineering",
     repoUrl: "https://github.com/BlackDeath-1708/syncpad",
+    liveUrl: "https://syncpad-cbs7.onrender.com",
     featured: true,
     caseStudy: {
       problem:
