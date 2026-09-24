@@ -1,12 +1,13 @@
 export const siteConfig = {
   name: "Sudhareshan V",
-  title: "Cybersecurity & Systems Engineer",
+  title: "Cybersecurity Engineer & Software Developer",
   tagline:
-    "Building backend services, Linux networking tools, and kernel-level (eBPF) security programs.",
-  bio: "Final-year Computer Science (Cyber Security) student who builds backend services, Linux networking tools and kernel-level (eBPF) programs. Research intern at CAIR, DRDO, and former co-founder and CTO of a cybersecurity startup.",
+    "Building backend services and full-stack applications, with a focus on kernel-level security tooling and network defense.",
+  bio: "Final-year Computer Science (Cyber Security) student who builds full-stack software and kernel-level (eBPF) security programs. Research intern at CAIR, DRDO, and former co-founder and CTO of a cybersecurity startup.",
   narrative: [
     "I'm a final-year Computer Science (Cyber Security) student, most interested in the layer where operating systems, networks, and security overlap — the gap between what a system is supposed to do and what you can actually verify it's doing.",
     "That question has taken me in a few directions at once: writing eBPF programs at the XDP hook for in-kernel packet classification, researching IP-level geolocation methods as a research intern at CAIR, DRDO, and — before that — co-founding a cybersecurity startup where I went from writing backend code to deploying SIEM pipelines for enterprise clients as CTO.",
+    "Alongside the security work, I build full-stack software end to end — React front ends, Node/Express and Flask/Django backends, MongoDB-backed apps deployed on AWS. It's the same engineering muscle, just pointed at a different kind of problem: shipping a working product instead of finding a flaw in one.",
     "Most of what I build comes back to the same constraint: how much can you actually verify about a system's behavior, especially when you don't control every layer of it — a network you can only passively observe, a process you don't want to trust just because it's running as root, traffic you need to police without decrypting it. ODIN, the eBPF endpoint security project, and the application firewall are all different angles on that.",
   ],
   now: "Researching city-level IP geolocation at CAIR, DRDO (through December 2026), and building out the eBPF/XDP kernel security project in whatever time is left over.",

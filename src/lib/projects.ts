@@ -131,6 +131,6 @@ export const projects: Project[] = [
     stack: ["React", "Node.js", "Express", "MongoDB", "JWT"],
     category: "Software Engineering",
     repoUrl: "https://github.com/BlackDeath-1708/E-COMMERCE",
-    featured: false,
+    featured: true,
   },
 ];

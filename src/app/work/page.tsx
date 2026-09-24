@@ -24,8 +24,8 @@ export default function WorkPage() {
         </h1>
       </div>
       <p className="mt-4 max-w-xl text-lg text-foreground/70">
-        Things I&apos;ve built, mostly security-focused. ODIN and PhishGuard have full
-        write-ups — the rest are quick summaries.
+        Security tooling and full-stack software. ODIN and PhishGuard have full write-ups —
+        the rest are quick summaries.
       </p>
 
       {featured && (
