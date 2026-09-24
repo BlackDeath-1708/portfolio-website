@@ -133,4 +133,26 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/BlackDeath-1708/E-COMMERCE",
     featured: true,
   },
+  {
+    slug: "syncpad",
+    title: "SyncPad — Real-Time Collaborative Notepad",
+    summary:
+      "Create a room, share the link, write together — live content sync and presence over WebSockets, built from scratch.",
+    description:
+      "A real-time collaborative notepad: create a room, share the link, and everyone with it types into the same document live. A custom Node HTTP server wraps Next.js's request handler and attaches a Socket.io instance to it, since persistent WebSocket connections aren't supported on Vercel's serverless model. Per-room presence is tracked as a live user map, and debounced content edits are broadcast to every other socket in the room.",
+    stack: ["Next.js", "TypeScript", "Socket.io", "Node.js", "Tailwind CSS"],
+    category: "Software Engineering",
+    repoUrl: "https://github.com/BlackDeath-1708/syncpad",
+    featured: true,
+    caseStudy: {
+      problem:
+        "Real-time collaboration demos often either lean entirely on a managed pub/sub SaaS — leaving nothing to actually engineer — or fake it with polling. The goal was to build the two things that actually matter in live sync, presence and content propagation, from scratch.",
+      approach:
+        "A custom Node HTTP server wraps Next.js's request handler and attaches a Socket.io instance to the same server, since Vercel's serverless functions can't hold a persistent WebSocket connection. Clients join a room, receive its current content, then broadcast debounced edits that the server relays to every other socket in that room — never back to the sender, which is what keeps a local textarea from fighting its own cursor.",
+      challenge:
+        "Presence had to survive disconnects cleanly: each room tracks a Map of socket ID to user, and on disconnect the user is removed and presence is rebroadcast to whoever's left. Verified directly — two isolated browser sessions joined to the same room, edited from both, then one closed to confirm the other's presence list updated live.",
+      result:
+        "Working end to end: two tabs in the same room sync typed content in real time and see each other's live presence. One limitation is deliberately left undisguised — content sync is last-writer-wins on the full string, not a CRDT/OT merge, which is the right tradeoff for an MVP but not for a production multi-editor tool.",
+    },
+  },
 ];
