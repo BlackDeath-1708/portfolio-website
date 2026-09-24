@@ -17,7 +17,7 @@ export default function ContactPage() {
       <div className="mt-8 flex flex-col gap-3 text-sm font-medium">
         <a
           href={`mailto:${siteConfig.email}`}
-          className="w-fit rounded-full bg-foreground px-5 py-2.5 text-background transition-opacity hover:opacity-90"
+          className="w-fit rounded-full bg-accent px-5 py-2.5 text-accent-foreground transition-opacity hover:opacity-90"
         >
           {siteConfig.email}
         </a>
@@ -25,7 +25,7 @@ export default function ContactPage() {
           href={siteConfig.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-fit rounded-full border border-black/10 px-5 py-2.5 transition-colors hover:border-black/30 dark:border-white/10 dark:hover:border-white/30"
+          className="w-fit rounded-full border border-black/10 px-5 py-2.5 transition-colors hover:border-accent/40 dark:border-white/10"
         >
           GitHub
         </a>
@@ -33,14 +33,14 @@ export default function ContactPage() {
           href={siteConfig.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-fit rounded-full border border-black/10 px-5 py-2.5 transition-colors hover:border-black/30 dark:border-white/10 dark:hover:border-white/30"
+          className="w-fit rounded-full border border-black/10 px-5 py-2.5 transition-colors hover:border-accent/40 dark:border-white/10"
         >
           LinkedIn
         </a>
         <a
           href={siteConfig.resumeUrl}
           download
-          className="w-fit rounded-full border border-black/10 px-5 py-2.5 transition-colors hover:border-black/30 dark:border-white/10 dark:hover:border-white/30"
+          className="w-fit rounded-full border border-black/10 px-5 py-2.5 transition-colors hover:border-accent/40 dark:border-white/10"
         >
           Download résumé
         </a>

@@ -14,7 +14,7 @@ export function Footer() {
             href={siteConfig.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-foreground"
+            className="transition-colors hover:text-accent"
           >
             GitHub
           </a>
@@ -22,11 +22,14 @@ export function Footer() {
             href={siteConfig.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-foreground"
+            className="transition-colors hover:text-accent"
           >
             LinkedIn
           </a>
-          <a href={`mailto:${siteConfig.email}`} className="hover:text-foreground">
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="transition-colors hover:text-accent"
+          >
             Email
           </a>
         </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Badge } from "@/components/Badge";
 import { projects } from "@/lib/projects";
 
 type Props = {
@@ -36,11 +37,8 @@ export default async function ProjectDetailPage({ params }: Props) {
 
       <ul className="mt-4 flex flex-wrap gap-2">
         {project.stack.map((tech) => (
-          <li
-            key={tech}
-            className="rounded-full bg-black/5 px-2.5 py-1 text-xs text-foreground/70 dark:bg-white/10"
-          >
-            {tech}
+          <li key={tech}>
+            <Badge>{tech}</Badge>
           </li>
         ))}
       </ul>
@@ -54,7 +52,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           href={project.repoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-block rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90"
+          className="mt-8 inline-block rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
         >
           View on GitHub
         </a>

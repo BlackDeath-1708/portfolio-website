@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Badge } from "@/components/Badge";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -101,11 +102,8 @@ export default function AboutPage() {
             <p className="text-sm font-medium text-foreground/70">{category}</p>
             <ul className="mt-2 flex flex-wrap gap-2">
               {items.map((skill) => (
-                <li
-                  key={skill}
-                  className="rounded-full bg-black/5 px-3 py-1.5 text-sm text-foreground/80 dark:bg-white/10"
-                >
-                  {skill}
+                <li key={skill}>
+                  <Badge>{skill}</Badge>
                 </li>
               ))}
             </ul>

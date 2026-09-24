@@ -17,20 +17,20 @@ export default function Home() {
         <div className="mt-8 flex gap-4 text-sm font-medium">
           <Link
             href="/projects"
-            className="rounded-full bg-foreground px-5 py-2.5 text-background transition-opacity hover:opacity-90"
+            className="rounded-full bg-accent px-5 py-2.5 text-accent-foreground transition-opacity hover:opacity-90"
           >
             View projects
           </Link>
           <Link
             href="/contact"
-            className="rounded-full border border-black/10 px-5 py-2.5 transition-colors hover:border-black/30 dark:border-white/10 dark:hover:border-white/30"
+            className="rounded-full border border-black/10 px-5 py-2.5 transition-colors hover:border-accent/40 dark:border-white/10"
           >
             Get in touch
           </Link>
           <a
             href={siteConfig.resumeUrl}
             download
-            className="rounded-full border border-black/10 px-5 py-2.5 transition-colors hover:border-black/30 dark:border-white/10 dark:hover:border-white/30"
+            className="rounded-full border border-black/10 px-5 py-2.5 transition-colors hover:border-accent/40 dark:border-white/10"
           >
             Résumé
           </a>
