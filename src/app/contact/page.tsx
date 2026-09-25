@@ -6,6 +6,8 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Contact",
+  description:
+    "Get in touch about software engineering, cybersecurity, or research opportunities.",
 };
 
 export default function ContactPage() {
@@ -21,6 +23,11 @@ export default function ContactPage() {
         Let&apos;s build something meaningful.
       </p>
       <p className="mt-4 max-w-xl text-foreground/70">{siteConfig.openTo}.</p>
+      <p className="mt-2 max-w-xl text-sm text-foreground-muted">
+        This site leans security-heavy because that&apos;s where my deepest work is, but I&apos;m
+        applying just as seriously to general Software Engineering (SDE) roles — not only
+        security-focused ones.
+      </p>
       <div className="mt-3 flex items-center gap-2 font-mono text-xs text-foreground-muted">
         <span className="status-dot" />
         {siteConfig.location}

@@ -84,7 +84,7 @@ export const projects: Project[] = [
       "A host-based firewall that maps each outgoing connection to its originating process via /proc and netlink sockets, with a rule-based allow/deny/throttle policy engine. Includes a Flask REST management console for multi-endpoint administration, traffic logging, and alerts, and enforces policy on encrypted traffic using TLS metadata (JA3, SNI) rather than decryption.",
     stack: ["Python", "Flask", "Linux", "iptables", "NFQUEUE"],
     category: "Cybersecurity",
-    featured: false,
+    featured: true,
   },
   {
     slug: "kernel-level-endpoint-security",
@@ -95,7 +95,7 @@ export const projects: Project[] = [
       "A self-initiated, ongoing project writing eBPF programs at the XDP hook for line-rate in-kernel packet classification, and BPF-LSM hooks for per-process network access control that resists root bypass. Includes a telemetry pipeline streaming events from the eBPF programs to a userspace daemon through shared-memory ring buffers.",
     stack: ["C", "eBPF", "XDP", "BPF-LSM"],
     category: "Cybersecurity",
-    featured: false,
+    featured: true,
   },
   {
     slug: "rjpolice-hackathon-phishing-detector",
@@ -132,7 +132,7 @@ export const projects: Project[] = [
     stack: ["React", "Node.js", "Express", "MongoDB", "JWT"],
     category: "Software Engineering",
     repoUrl: "https://github.com/BlackDeath-1708/E-COMMERCE",
-    featured: true,
+    featured: false,
   },
   {
     slug: "syncpad",
@@ -145,7 +145,7 @@ export const projects: Project[] = [
     category: "Software Engineering",
     repoUrl: "https://github.com/BlackDeath-1708/syncpad",
     liveUrl: "https://syncpad-cbs7.onrender.com",
-    featured: true,
+    featured: false,
     caseStudy: {
       problem:
         "Real-time collaboration demos often either lean entirely on a managed pub/sub SaaS — leaving nothing to actually engineer — or fake it with polling. The goal was to build the two things that actually matter in live sync, presence and content propagation, from scratch.",

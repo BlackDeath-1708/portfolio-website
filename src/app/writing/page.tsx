@@ -5,6 +5,8 @@ import { posts } from "@/lib/writing";
 
 export const metadata: Metadata = {
   title: "Writing",
+  description:
+    "Notes on specific technical problems I ran into while building security tooling, and how I actually solved them.",
 };
 
 export default function WritingPage() {

@@ -7,6 +7,8 @@ import { projects } from "@/lib/projects";
 
 export const metadata: Metadata = {
   title: "Work",
+  description:
+    "Security tooling and full-stack software projects, including ODIN (real-time network threat detection), an eBPF/XDP kernel security tool, and PhishGuard.",
 };
 
 const featuredSlug = "odin-king-of-analysis";
@@ -24,8 +26,8 @@ export default function WorkPage() {
         </h1>
       </div>
       <p className="mt-4 max-w-xl text-lg text-foreground/70">
-        Security tooling and full-stack software. ODIN and PhishGuard have full write-ups —
-        the rest are quick summaries.
+        Security tooling and full-stack software. ODIN, PhishGuard, and SyncPad have full
+        write-ups — the rest are quick summaries.
       </p>
 
       {featured && (

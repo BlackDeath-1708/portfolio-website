@@ -7,6 +7,8 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "About",
+  description:
+    "Final-year Computer Science (Cyber Security) student building eBPF/XDP kernel security tooling, network threat detection, and full-stack software.",
 };
 
 const ABOUT_STATEMENT = "Security engineer. Software builder. Deliberately both.";
