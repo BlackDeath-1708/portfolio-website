@@ -74,7 +74,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="flex min-h-screen flex-col justify-center border-t border-black/5 px-6 py-24 dark:border-white/5">
+      <section className="border-t border-black/5 px-6 py-24 dark:border-white/5">
         <div className="mx-auto w-full max-w-5xl">
           <Reveal>
             <div className="flex max-w-2xl flex-col gap-6 text-xl leading-relaxed text-foreground/80">
@@ -94,7 +94,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="flex min-h-screen flex-col justify-center border-t border-black/5 px-6 py-24 dark:border-white/5">
+      <section className="border-t border-black/5 px-6 py-24 dark:border-white/5">
         <div className="mx-auto w-full max-w-5xl">
           <Reveal>
             <h2 className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
@@ -121,7 +121,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="flex min-h-screen flex-col justify-center border-t border-black/5 px-6 py-24 dark:border-white/5">
+      <section className="border-t border-black/5 px-6 py-24 dark:border-white/5">
         <div className="mx-auto w-full max-w-5xl">
           <Reveal>
             <h2 className="font-mono text-xs uppercase tracking-widest text-foreground-muted">

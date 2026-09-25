@@ -67,7 +67,7 @@ export function Nav() {
       data-theme={forceDark ? "dark" : undefined}
       className={`fixed top-0 z-30 w-full transition-[padding,background-color,backdrop-filter] duration-300 ${
         isScrolled
-          ? "border-b border-black/5 bg-background/80 py-3 backdrop-blur-2xl backdrop-saturate-150 dark:border-white/5"
+          ? "border-b border-black/10 bg-surface/90 py-3 shadow-sm shadow-black/5 backdrop-blur-2xl backdrop-saturate-150 dark:border-white/10 dark:shadow-black/40"
           : "border-b border-transparent bg-transparent py-5"
       }`}
     >
