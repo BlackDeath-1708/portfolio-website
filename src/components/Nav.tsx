@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import gsap from "gsap";
@@ -15,8 +16,13 @@ export function Nav() {
   const forceDark = FORCED_DARK_ROUTES.has(pathname);
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<HTMLAnchorElement[]>([]);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     function handleScroll() {
@@ -115,27 +121,32 @@ export function Nav() {
         </div>
       </div>
 
-      <div
-        ref={overlayRef}
-        id="mobile-nav"
-        className="invisible fixed inset-0 z-30 flex flex-col justify-center bg-background px-8 opacity-0 sm:hidden"
-      >
-        <nav aria-label="Primary mobile" className="flex flex-col gap-2">
-          {siteConfig.nav.map((item, i) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              ref={(el) => {
-                if (el) linksRef.current[i] = el;
-              }}
-              onClick={() => setIsOpen(false)}
-              className="text-5xl font-semibold tracking-tight text-foreground transition-colors hover:text-accent"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-      </div>
+      {isMounted &&
+        createPortal(
+          <div
+            ref={overlayRef}
+            id="mobile-nav"
+            data-theme={forceDark ? "dark" : undefined}
+            className="invisible fixed inset-0 z-20 flex flex-col justify-center bg-background px-8 opacity-0 sm:hidden"
+          >
+            <nav aria-label="Primary mobile" className="flex flex-col gap-2">
+              {siteConfig.nav.map((item, i) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  ref={(el) => {
+                    if (el) linksRef.current[i] = el;
+                  }}
+                  onClick={() => setIsOpen(false)}
+                  className="text-5xl font-semibold tracking-tight text-foreground transition-colors hover:text-accent"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>,
+          document.body,
+        )}
     </header>
   );
 }
