@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Reveal } from "@/components/Reveal";
+import { NetworkVisual } from "@/components/three/NetworkVisual";
 import { achievements, experience } from "@/lib/resume";
 import { projects } from "@/lib/projects";
 import { siteConfig } from "@/lib/site-config";
@@ -19,7 +20,14 @@ export default function Home() {
   return (
     <div>
       <section className="bg-grid relative overflow-hidden border-b border-black/10 dark:border-white/10">
-        <div className="mx-auto max-w-5xl px-6 py-24 sm:py-32">
+        <NetworkVisual
+          mode="cloud"
+          count={30}
+          travelerCount={6}
+          eager
+          className="pointer-events-none absolute inset-0 opacity-70"
+        />
+        <div className="relative z-10 mx-auto max-w-5xl px-6 py-24 sm:py-32">
           <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-foreground/50">
             <span className="status-dot" />
             B.E. CSE (Cyber Security), Final Year — Coimbatore, IN
@@ -61,7 +69,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative border-t border-black/10 dark:border-white/10">
+        <div className="relative z-10 border-t border-black/10 bg-background/60 backdrop-blur-sm dark:border-white/10">
           <div className="mx-auto grid max-w-5xl grid-cols-2 divide-x divide-y divide-black/10 px-6 sm:grid-cols-4 sm:divide-y-0 dark:divide-white/10">
             {stats.map((stat) => (
               <div key={stat.label} className="py-6 text-center sm:text-left sm:px-2">

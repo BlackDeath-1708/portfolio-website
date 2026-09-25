@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/Badge";
+import { NetworkVisual } from "@/components/three/NetworkVisual";
 import { projects } from "@/lib/projects";
 
 type Props = {
@@ -35,25 +36,35 @@ export default async function WorkDetailPage({ params }: Props) {
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-20">
-      <Link
-        href="/work"
-        className="font-mono text-xs uppercase tracking-widest text-foreground/50 transition-colors hover:text-accent"
-      >
-        ← All work
-      </Link>
+      <div className="relative overflow-hidden rounded-xl">
+        <NetworkVisual
+          mode="cloud"
+          count={18}
+          travelerCount={3}
+          className="pointer-events-none absolute inset-0 opacity-30"
+        />
+        <div className="relative z-10">
+          <Link
+            href="/work"
+            className="font-mono text-xs uppercase tracking-widest text-foreground/50 transition-colors hover:text-accent"
+          >
+            ← All work
+          </Link>
 
-      <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
-        {project.title}
-      </h1>
-      <p className="mt-3 text-lg text-foreground/70">{project.summary}</p>
+          <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
+            {project.title}
+          </h1>
+          <p className="mt-3 text-lg text-foreground/70">{project.summary}</p>
 
-      <ul className="mt-5 flex flex-wrap gap-2">
-        {project.stack.map((tech) => (
-          <li key={tech}>
-            <Badge>{tech}</Badge>
-          </li>
-        ))}
-      </ul>
+          <ul className="mt-5 flex flex-wrap gap-2">
+            {project.stack.map((tech) => (
+              <li key={tech}>
+                <Badge>{tech}</Badge>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
 
       {project.caseStudy ? (
         <div className="mt-10 flex flex-col gap-10">

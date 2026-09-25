@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { NetworkVisual } from "@/components/three/NetworkVisual";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -35,6 +36,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <NetworkVisual
+          mode="cloud"
+          count={16}
+          travelerCount={3}
+          eager
+          minWidth={768}
+          className="pointer-events-none fixed inset-0 -z-10 hidden opacity-20 md:block"
+        />
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
