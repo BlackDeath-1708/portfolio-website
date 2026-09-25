@@ -10,11 +10,7 @@ export const experience: ExperienceEntry[] = [
     role: "Research Intern",
     org: "Centre for Artificial Intelligence & Robotics (CAIR), DRDO",
     period: "Jul 2026 – Dec 2026",
-    points: [
-      "Designing measurement-based and topology-based methods to geolocate IP addresses at city level across Indian ISP networks, as a more precise alternative to OSINT geolocation databases.",
-      "Collecting and cleaning traceroute data from distributed probes; analyzing hop timing and topology to infer location.",
-      "Building Python and Streamlit tooling to run measurements and explore results.",
-    ],
+    points: ["Network security research — project details are confidential."],
   },
   {
     role: "Co-Founder & Chief Technology Officer",

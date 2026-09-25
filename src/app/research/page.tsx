@@ -6,7 +6,7 @@ import { research } from "@/lib/research";
 export const metadata: Metadata = {
   title: "Research",
   description:
-    "Ongoing research on city-level IP geolocation as a research intern at CAIR, DRDO, outside of shipped projects.",
+    "Ongoing network security research as a research intern at CAIR, DRDO, outside of shipped projects.",
 };
 
 export default function ResearchPage() {
