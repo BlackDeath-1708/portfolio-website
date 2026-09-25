@@ -27,13 +27,30 @@ export default function AboutPage() {
           fill
           priority
           sizes="100vw"
-          className="scale-110 object-cover object-[88%_30%] opacity-70 blur-sm dark:opacity-78"
+          className="hidden scale-110 object-cover object-[88%_30%] opacity-78 blur-sm sm:block"
         />
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 hidden sm:block"
           style={{
             backgroundImage:
               "linear-gradient(to right, var(--background) 0%, var(--background) 15%, color-mix(in srgb, var(--background) 80%, transparent) 35%, color-mix(in srgb, var(--background) 50%, transparent) 55%, color-mix(in srgb, var(--background) 20%, transparent) 75%, transparent 100%)",
+          }}
+        />
+
+        <Image
+          src="/about-hero-bg-mobile.jpg"
+          alt=""
+          aria-hidden="true"
+          fill
+          priority
+          sizes="100vw"
+          className="block scale-110 object-cover object-center opacity-65 blur-sm sm:hidden"
+        />
+        <div
+          className="absolute inset-0 sm:hidden"
+          style={{
+            backgroundImage:
+              "linear-gradient(to bottom, var(--background) 0%, var(--background) 42%, color-mix(in srgb, var(--background) 80%, transparent) 58%, color-mix(in srgb, var(--background) 50%, transparent) 72%, color-mix(in srgb, var(--background) 20%, transparent) 90%, transparent 100%)",
           }}
         />
 
