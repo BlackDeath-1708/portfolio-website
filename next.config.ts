@@ -21,6 +21,7 @@ const securityHeaders = [
       "img-src 'self' data:",
       "font-src 'self' data:",
       "connect-src 'self'",
+      "frame-src https://syncpad-cbs7.onrender.com",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",

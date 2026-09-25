@@ -16,6 +16,7 @@ export type Project = {
   category: Category;
   repoUrl?: string;
   liveUrl?: string;
+  embeddable?: boolean;
   featured: boolean;
   caseStudy?: CaseStudy;
   architecture?: string[];
@@ -145,6 +146,7 @@ export const projects: Project[] = [
     category: "Software Engineering",
     repoUrl: "https://github.com/BlackDeath-1708/syncpad",
     liveUrl: "https://syncpad-cbs7.onrender.com",
+    embeddable: true,
     featured: false,
     caseStudy: {
       problem:

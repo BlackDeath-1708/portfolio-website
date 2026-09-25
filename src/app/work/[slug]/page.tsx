@@ -76,6 +76,28 @@ export default async function WorkDetailPage({ params }: Props) {
         </p>
       )}
 
+      {project.embeddable && project.liveUrl && (
+        <div className="mt-10">
+          <h2 className="font-mono text-xs uppercase tracking-widest text-accent">
+            Live preview
+          </h2>
+          <p className="mt-2 max-w-2xl text-sm text-foreground-muted">
+            Running instance, embedded directly — try it below. It&apos;s on free-tier hosting, so
+            it may take a few seconds to wake up.
+          </p>
+          <div className="mt-4 overflow-hidden rounded-xl border border-black/10 dark:border-white/10">
+            <iframe
+              src={project.liveUrl}
+              title={`${project.title} — live preview`}
+              loading="lazy"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+              referrerPolicy="no-referrer"
+              className="h-[520px] w-full bg-white"
+            />
+          </div>
+        </div>
+      )}
+
       <div className="mt-10 flex flex-wrap gap-3">
         {project.liveUrl && (
           <Magnetic>
@@ -85,7 +107,7 @@ export default async function WorkDetailPage({ params }: Props) {
               rel="noopener noreferrer"
               className="inline-block rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
             >
-              Live demo
+              {project.embeddable ? "Open full screen" : "Live demo"}
             </a>
           </Magnetic>
         )}
