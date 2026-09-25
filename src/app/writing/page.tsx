@@ -12,7 +12,7 @@ export default function WritingPage() {
     <div className="mx-auto max-w-5xl px-6 py-20">
       <div className="flex items-baseline gap-3">
         <span className="h-px w-8 bg-accent" />
-        <h1 className="font-mono text-xs uppercase tracking-widest text-foreground/50">
+        <h1 className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
           Writing
         </h1>
       </div>
@@ -26,7 +26,7 @@ export default function WritingPage() {
               href={`/writing/${post.slug}`}
               className="group flex flex-col gap-3 border-b border-black/10 py-8 transition-colors first:border-t dark:border-white/10 sm:flex-row sm:items-baseline sm:gap-8"
             >
-              <span className="font-mono text-sm text-foreground/30 sm:w-10 sm:shrink-0">
+              <span className="font-mono text-sm text-foreground-muted sm:w-10 sm:shrink-0">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <div className="flex-1">
@@ -42,7 +42,7 @@ export default function WritingPage() {
                   </span>
                 </div>
                 <p className="mt-1 text-sm text-foreground/60">{post.excerpt}</p>
-                <p className="mt-3 font-mono text-xs text-foreground/40">
+                <p className="mt-3 font-mono text-xs text-foreground-muted">
                   {new Date(post.date).toLocaleDateString("en-US", {
                     year: "numeric",
                     month: "short",

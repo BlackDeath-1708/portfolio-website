@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Magnetic } from "@/components/Magnetic";
 import { siteConfig } from "@/lib/site-config";
 
 type Errors = Partial<Record<"name" | "email" | "message", string>>;
@@ -47,7 +48,7 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} noValidate className="mt-10 flex max-w-xl flex-col gap-5">
       <div>
-        <label htmlFor="name" className="font-mono text-xs uppercase tracking-widest text-foreground/50">
+        <label htmlFor="name" className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
           Name
         </label>
         <input
@@ -67,7 +68,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="email" className="font-mono text-xs uppercase tracking-widest text-foreground/50">
+        <label htmlFor="email" className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
           Email
         </label>
         <input
@@ -89,7 +90,7 @@ export function ContactForm() {
       <div>
         <label
           htmlFor="message"
-          className="font-mono text-xs uppercase tracking-widest text-foreground/50"
+          className="font-mono text-xs uppercase tracking-widest text-foreground-muted"
         >
           Message
         </label>
@@ -110,14 +111,16 @@ export function ContactForm() {
       </div>
 
       <div className="flex items-center gap-4">
-        <button
-          type="submit"
-          className="w-fit rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
-        >
-          Send message
-        </button>
+        <Magnetic>
+          <button
+            type="submit"
+            className="w-fit rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
+          >
+            Send message
+          </button>
+        </Magnetic>
         {sent && (
-          <p className="text-xs text-foreground/50">
+          <p className="text-xs text-foreground-muted">
             Opening your email client — nothing sends automatically from here.
           </p>
         )}

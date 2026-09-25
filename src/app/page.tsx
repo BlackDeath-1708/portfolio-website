@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Reveal } from "@/components/Reveal";
-import { NetworkVisual } from "@/components/three/NetworkVisual";
+import { Magnetic } from "@/components/Magnetic";
+import { ScrollFade } from "@/components/ScrollFade";
+import { SplitReveal } from "@/components/SplitReveal";
+import { HeroScene } from "@/components/HeroScene";
 import { achievements, experience } from "@/lib/resume";
 import { projects } from "@/lib/projects";
 import { siteConfig } from "@/lib/site-config";
@@ -19,69 +22,62 @@ export default function Home() {
 
   return (
     <div>
-      <section className="bg-grid relative overflow-hidden border-b border-black/10 dark:border-white/10">
-        <NetworkVisual
-          mode="cloud"
-          count={30}
-          travelerCount={6}
-          eager
-          className="pointer-events-none absolute inset-0 opacity-70"
-        />
-        <div className="relative z-10 mx-auto max-w-5xl px-6 py-24 sm:py-32">
-          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-foreground/50">
-            <span className="status-dot" />
-            B.E. CSE (Cyber Security), Final Year — Coimbatore, IN
-          </div>
+      <section className="relative h-screen min-h-[720px] overflow-hidden border-b border-black/10 dark:border-white/10">
+        <HeroScene />
 
-          <h1 className="mt-6 text-5xl font-bold tracking-tight sm:text-7xl">
-            {siteConfig.name}
-          </h1>
-          <p className="mt-3 font-mono text-base text-accent sm:text-lg">
-            {siteConfig.title}
+        <ScrollFade
+          fadeDistance={600}
+          className="relative z-10 mx-auto flex h-full max-w-5xl flex-col justify-center px-6"
+        >
+          <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">
+            Cybersecurity × Software × Research
           </p>
+
+          <h1 className="mt-6 max-w-2xl text-5xl leading-[1.05] font-bold tracking-tight sm:text-7xl">
+            <SplitReveal text="Engineering systems that stay ahead." />
+          </h1>
+
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/70">
             {siteConfig.tagline}
           </p>
-          <p className="mt-3 font-mono text-xs text-foreground/40">
+          <p className="mt-3 font-mono text-xs text-foreground-muted">
             {siteConfig.location} · {siteConfig.openTo}
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-4 text-sm font-medium">
-            <Link
-              href="/work"
-              className="rounded-full bg-accent px-5 py-2.5 text-accent-foreground transition-opacity hover:opacity-90"
-            >
-              View work
-            </Link>
-            <Link
-              href="/contact"
-              className="rounded-full border border-black/10 px-5 py-2.5 transition-colors hover:border-accent/40 dark:border-white/10"
-            >
-              Get in touch
-            </Link>
-            <a
-              href={siteConfig.resumeUrl}
-              download
-              className="rounded-full border border-black/10 px-5 py-2.5 transition-colors hover:border-accent/40 dark:border-white/10"
-            >
-              Résumé
-            </a>
+          <div className="mt-10 flex flex-wrap gap-4 text-sm font-medium">
+            <Magnetic>
+              <Link
+                href="/work"
+                className="inline-block rounded-full bg-accent px-5 py-2.5 text-accent-foreground transition-opacity hover:opacity-90"
+              >
+                Explore my work →
+              </Link>
+            </Magnetic>
+            <Magnetic>
+              <a
+                href={siteConfig.resumeUrl}
+                download
+                className="inline-block rounded-full border border-black/10 px-5 py-2.5 transition-colors hover:border-accent/40 dark:border-white/10"
+              >
+                View résumé
+              </a>
+            </Magnetic>
           </div>
-        </div>
+        </ScrollFade>
+      </section>
 
-        <div className="relative z-10 border-t border-black/10 bg-background/60 backdrop-blur-sm dark:border-white/10">
-          <div className="mx-auto grid max-w-5xl grid-cols-2 divide-x divide-y divide-black/10 px-6 sm:grid-cols-4 sm:divide-y-0 dark:divide-white/10">
-            {stats.map((stat) => (
-              <div key={stat.label} className="py-6 text-center sm:text-left sm:px-2">
-                <p className="font-mono text-3xl font-bold text-accent sm:text-4xl">
-                  {stat.value}
-                </p>
-                <p className="mt-1 text-xs uppercase tracking-widest text-foreground/50">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
+      <section className="relative z-10 border-b border-black/10 bg-background dark:border-white/10">
+        <div className="mx-auto grid max-w-5xl grid-cols-2 divide-x divide-y divide-black/10 px-6 sm:grid-cols-4 sm:divide-y-0 dark:divide-white/10">
+          {stats.map((stat) => (
+            <div key={stat.label} className="py-8 text-center sm:text-left sm:px-2">
+              <p className="font-mono text-3xl font-bold text-accent sm:text-4xl">
+                {stat.value}
+              </p>
+              <p className="mt-1 text-xs uppercase tracking-widest text-foreground-muted">
+                {stat.label}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -90,13 +86,13 @@ export default function Home() {
           <div className="flex items-baseline justify-between gap-3">
             <div className="flex items-baseline gap-3">
               <span className="h-px w-8 bg-accent" />
-              <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50">
+              <h2 className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
                 Highlighted work
               </h2>
             </div>
             <Link
               href="/work"
-              className="font-mono text-xs uppercase tracking-widest text-foreground/50 transition-colors hover:text-accent"
+              className="font-mono text-xs uppercase tracking-widest text-foreground-muted transition-colors hover:text-accent"
             >
               View all →
             </Link>
@@ -116,13 +112,13 @@ export default function Home() {
           <div className="flex items-baseline justify-between gap-3">
             <div className="flex items-baseline gap-3">
               <span className="h-px w-8 bg-accent" />
-              <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50">
+              <h2 className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
                 Recent writing
               </h2>
             </div>
             <Link
               href="/writing"
-              className="font-mono text-xs uppercase tracking-widest text-foreground/50 transition-colors hover:text-accent"
+              className="font-mono text-xs uppercase tracking-widest text-foreground-muted transition-colors hover:text-accent"
             >
               View all →
             </Link>

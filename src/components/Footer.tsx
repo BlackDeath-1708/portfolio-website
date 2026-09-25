@@ -5,7 +5,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-black/10 dark:border-white/10">
-      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-8 font-mono text-xs text-foreground/50">
+      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-8 font-mono text-xs text-foreground-muted">
         <p>
           © {year} {siteConfig.name}
         </p>

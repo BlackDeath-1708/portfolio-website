@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/Badge";
-import { NetworkVisual } from "@/components/three/NetworkVisual";
+import { Magnetic } from "@/components/Magnetic";
 import { projects } from "@/lib/projects";
 
 type Props = {
@@ -36,35 +36,25 @@ export default async function WorkDetailPage({ params }: Props) {
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-20">
-      <div className="relative overflow-hidden rounded-xl">
-        <NetworkVisual
-          mode="cloud"
-          count={18}
-          travelerCount={3}
-          className="pointer-events-none absolute inset-0 opacity-30"
-        />
-        <div className="relative z-10">
-          <Link
-            href="/work"
-            className="font-mono text-xs uppercase tracking-widest text-foreground/50 transition-colors hover:text-accent"
-          >
-            ← All work
-          </Link>
+      <Link
+        href="/work"
+        className="font-mono text-xs uppercase tracking-widest text-foreground-muted transition-colors hover:text-accent"
+      >
+        ← All work
+      </Link>
 
-          <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
-            {project.title}
-          </h1>
-          <p className="mt-3 text-lg text-foreground/70">{project.summary}</p>
+      <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
+        {project.title}
+      </h1>
+      <p className="mt-3 text-lg text-foreground/70">{project.summary}</p>
 
-          <ul className="mt-5 flex flex-wrap gap-2">
-            {project.stack.map((tech) => (
-              <li key={tech}>
-                <Badge>{tech}</Badge>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      <ul className="mt-5 flex flex-wrap gap-2">
+        {project.stack.map((tech) => (
+          <li key={tech}>
+            <Badge>{tech}</Badge>
+          </li>
+        ))}
+      </ul>
 
       {project.caseStudy ? (
         <div className="mt-10 flex flex-col gap-10">
@@ -87,28 +77,32 @@ export default async function WorkDetailPage({ params }: Props) {
 
       <div className="mt-10 flex flex-wrap gap-3">
         {project.liveUrl && (
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
-          >
-            Live demo
-          </a>
+          <Magnetic>
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
+            >
+              Live demo
+            </a>
+          </Magnetic>
         )}
         {project.repoUrl ? (
-          <a
-            href={project.repoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`inline-block rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
-              project.liveUrl
-                ? "border border-black/10 hover:border-accent/40 dark:border-white/10"
-                : "bg-accent text-accent-foreground hover:opacity-90"
-            }`}
-          >
-            View on GitHub
-          </a>
+          <Magnetic>
+            <a
+              href={project.repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-block rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
+                project.liveUrl
+                  ? "border border-black/10 hover:border-accent/40 dark:border-white/10"
+                  : "bg-accent text-accent-foreground hover:opacity-90"
+              }`}
+            >
+              View on GitHub
+            </a>
+          </Magnetic>
         ) : (
           <p className="inline-block rounded-full bg-black/5 px-5 py-2.5 text-sm text-foreground/60 dark:bg-white/10">
             Private repository / in progress

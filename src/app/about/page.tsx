@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Badge } from "@/components/Badge";
 import { Reveal } from "@/components/Reveal";
+import { SkillLayers } from "@/components/SkillLayers";
+import { SplitReveal } from "@/components/SplitReveal";
 import { achievements, experience, skills } from "@/lib/resume";
 import { siteConfig } from "@/lib/site-config";
 
@@ -8,126 +9,152 @@ export const metadata: Metadata = {
   title: "About",
 };
 
+const ABOUT_STATEMENT = "Security engineer. Software builder. Deliberately both.";
+
+const skillLayers = Object.entries(skills).map(([label, items]) => ({ label, items }));
+
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-5xl px-6 py-20">
-      <div className="flex items-baseline gap-3">
-        <span className="h-px w-8 bg-accent" />
-        <h1 className="font-mono text-xs uppercase tracking-widest text-foreground/50">
-          About
-        </h1>
-      </div>
-      <div className="mt-6 flex max-w-2xl flex-col gap-5 text-lg leading-relaxed text-foreground/80">
-        {siteConfig.narrative.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
-      </div>
-
-      <Reveal className="mt-16">
-        <div className="flex items-center gap-3 rounded-lg border border-black/10 px-5 py-4 dark:border-white/10">
-          <span className="status-dot shrink-0" />
-          <p className="font-mono text-xs text-foreground/60 sm:text-sm">
-            <span className="text-accent">Now —</span> {siteConfig.now}
-          </p>
+    <div>
+      <section className="flex min-h-screen flex-col justify-center px-6 py-24">
+        <div className="mx-auto w-full max-w-5xl">
+          <div className="flex items-baseline gap-3">
+            <span className="h-px w-8 bg-accent" />
+            <p className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
+              About
+            </p>
+          </div>
+          <h1 className="mt-8 max-w-3xl text-5xl leading-[1.1] font-bold tracking-tight sm:text-7xl">
+            <SplitReveal text={ABOUT_STATEMENT} delay={0.1} />
+          </h1>
         </div>
-      </Reveal>
+      </section>
 
-      <Reveal className="mt-20">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50">
-          Experience
-        </h2>
-        <div className="relative mt-8 flex flex-col gap-12 border-l border-black/10 pl-8 dark:border-white/10">
-          {experience.map((job) => (
-            <div key={job.role} className="relative">
-              <span className="absolute top-1.5 -left-[calc(2rem+4.5px)] h-2.5 w-2.5 rounded-full bg-accent" />
-              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                <h3 className="text-lg font-semibold">{job.role}</h3>
-                <span className="font-mono text-xs text-foreground/50">{job.period}</span>
+      <section className="flex min-h-screen flex-col justify-center border-t border-black/5 px-6 py-24 dark:border-white/5">
+        <div className="mx-auto w-full max-w-5xl">
+          <Reveal>
+            <div className="flex max-w-2xl flex-col gap-6 text-xl leading-relaxed text-foreground/80">
+              {siteConfig.narrative.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </Reveal>
+          <Reveal delay={120} className="mt-10">
+            <div className="flex items-center gap-3 rounded-lg border border-black/10 px-5 py-4 dark:border-white/10">
+              <span className="status-dot shrink-0" />
+              <p className="font-mono text-xs text-foreground/60 sm:text-sm">
+                <span className="text-accent">Now —</span> {siteConfig.now}
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="flex min-h-screen flex-col justify-center border-t border-black/5 px-6 py-24 dark:border-white/5">
+        <div className="mx-auto w-full max-w-5xl">
+          <Reveal>
+            <h2 className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
+              Experience
+            </h2>
+            <div className="relative mt-8 flex flex-col gap-12 border-l border-black/10 pl-8 dark:border-white/10">
+              {experience.map((job) => (
+                <div key={job.role} className="relative">
+                  <span className="absolute top-1.5 -left-[calc(2rem+4.5px)] h-2.5 w-2.5 rounded-full bg-accent" />
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                    <h3 className="text-xl font-semibold">{job.role}</h3>
+                    <span className="font-mono text-xs text-foreground-muted">{job.period}</span>
+                  </div>
+                  <p className="text-sm text-accent">{job.org}</p>
+                  <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-foreground/70">
+                    {job.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="flex min-h-screen flex-col justify-center border-t border-black/5 px-6 py-24 dark:border-white/5">
+        <div className="mx-auto w-full max-w-5xl">
+          <Reveal>
+            <h2 className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
+              Skills & stack
+            </h2>
+            <p className="mt-3 text-sm text-foreground-muted">Tap a layer to expand it.</p>
+            <div className="mt-8">
+              <SkillLayers layers={skillLayers} />
+            </div>
+          </Reveal>
+
+          <Reveal delay={120} className="mt-16">
+            <h2 className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
+              Education
+            </h2>
+            <div className="mt-8 grid gap-x-8 gap-y-4 rounded-lg border border-black/10 p-6 sm:grid-cols-2 dark:border-white/10">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
+                  Degree
+                </p>
+                <p className="mt-1 text-sm text-foreground/80">{siteConfig.education.degree}</p>
               </div>
-              <p className="text-sm text-accent">{job.org}</p>
-              <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-foreground/70">
-                {job.points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
+              <div>
+                <p className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
+                  Specialization
+                </p>
+                <p className="mt-1 text-sm text-foreground/80">
+                  {siteConfig.education.specialization}
+                </p>
+              </div>
+              <div>
+                <p className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
+                  Institution
+                </p>
+                <p className="mt-1 text-sm text-foreground/80">
+                  {siteConfig.education.institution}
+                </p>
+              </div>
+              <div>
+                <p className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
+                  Graduation
+                </p>
+                <p className="mt-1 text-sm text-foreground/80">
+                  {siteConfig.education.graduation}
+                </p>
+              </div>
+              <div className="sm:col-span-2">
+                <p className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
+                  Focus
+                </p>
+                <p className="mt-1 text-sm text-foreground/80">{siteConfig.education.focus}</p>
+              </div>
             </div>
-          ))}
+          </Reveal>
         </div>
-      </Reveal>
+      </section>
 
-      <Reveal className="mt-20">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50">
-          Skills & stack
-        </h2>
-        <div className="mt-8 flex flex-col gap-6">
-          {Object.entries(skills).map(([category, items]) => (
-            <div key={category}>
-              <p className="text-sm font-medium text-foreground/60">{category}</p>
-              <ul className="mt-3 flex flex-wrap gap-2">
-                {items.map((skill) => (
-                  <li key={skill}>
-                    <Badge>{skill}</Badge>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+      <section className="flex min-h-screen flex-col justify-center border-t border-black/5 px-6 py-24 dark:border-white/5">
+        <div className="mx-auto w-full max-w-5xl">
+          <Reveal>
+            <h2 className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
+              Achievements
+            </h2>
+            <ul className="mt-8 flex flex-col gap-4">
+              {achievements.map((item) => (
+                <li
+                  key={item}
+                  className="flex gap-3 text-base leading-relaxed text-foreground/80"
+                >
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </div>
-      </Reveal>
-
-      <Reveal className="mt-20">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50">
-          Education
-        </h2>
-        <div className="mt-8 grid gap-x-8 gap-y-4 rounded-lg border border-black/10 p-6 sm:grid-cols-2 dark:border-white/10">
-          <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-foreground/40">
-              Degree
-            </p>
-            <p className="mt-1 text-sm text-foreground/80">{siteConfig.education.degree}</p>
-          </div>
-          <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-foreground/40">
-              Specialization
-            </p>
-            <p className="mt-1 text-sm text-foreground/80">
-              {siteConfig.education.specialization}
-            </p>
-          </div>
-          <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-foreground/40">
-              Institution
-            </p>
-            <p className="mt-1 text-sm text-foreground/80">{siteConfig.education.institution}</p>
-          </div>
-          <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-foreground/40">
-              Graduation
-            </p>
-            <p className="mt-1 text-sm text-foreground/80">{siteConfig.education.graduation}</p>
-          </div>
-          <div className="sm:col-span-2">
-            <p className="font-mono text-xs uppercase tracking-widest text-foreground/40">
-              Focus
-            </p>
-            <p className="mt-1 text-sm text-foreground/80">{siteConfig.education.focus}</p>
-          </div>
-        </div>
-      </Reveal>
-
-      <Reveal className="mt-20">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50">
-          Achievements
-        </h2>
-        <ul className="mt-8 flex flex-col gap-4">
-          {achievements.map((item) => (
-            <li key={item} className="flex gap-3 text-sm leading-relaxed text-foreground/80">
-              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-              {item}
-            </li>
-          ))}
-        </ul>
-      </Reveal>
+      </section>
     </div>
   );
 }

@@ -30,13 +30,13 @@ export default async function WritingDetailPage({ params }: Props) {
     <div className="mx-auto max-w-3xl px-6 py-20">
       <Link
         href="/writing"
-        className="font-mono text-xs uppercase tracking-widest text-foreground/50 transition-colors hover:text-accent"
+        className="font-mono text-xs uppercase tracking-widest text-foreground-muted transition-colors hover:text-accent"
       >
         ← All writing
       </Link>
 
       <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">{post.title}</h1>
-      <p className="mt-3 font-mono text-xs text-foreground/40">
+      <p className="mt-3 font-mono text-xs text-foreground-muted">
         {new Date(post.date).toLocaleDateString("en-US", {
           year: "numeric",
           month: "short",

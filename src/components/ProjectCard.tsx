@@ -13,7 +13,7 @@ export function ProjectCard({ project, index }: Props) {
       href={`/work/${project.slug}`}
       className="group flex flex-col gap-3 border-b border-black/10 py-8 transition-colors first:border-t dark:border-white/10 sm:flex-row sm:items-baseline sm:gap-8"
     >
-      <span className="font-mono text-sm text-foreground/30 sm:w-10 sm:shrink-0">
+      <span className="font-mono text-sm text-foreground-muted sm:w-10 sm:shrink-0">
         {String(index + 1).padStart(2, "0")}
       </span>
       <div className="flex-1">

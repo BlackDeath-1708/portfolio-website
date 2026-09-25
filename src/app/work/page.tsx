@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Badge } from "@/components/Badge";
 import { ProjectList } from "@/components/ProjectList";
 import { Reveal } from "@/components/Reveal";
-import { NetworkVisual } from "@/components/three/NetworkVisual";
 import { projects } from "@/lib/projects";
 
 export const metadata: Metadata = {
@@ -20,7 +19,7 @@ export default function WorkPage() {
     <div className="mx-auto max-w-5xl px-6 py-20">
       <div className="flex items-baseline gap-3">
         <span className="h-px w-8 bg-accent" />
-        <h1 className="font-mono text-xs uppercase tracking-widest text-foreground/50">
+        <h1 className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
           Work
         </h1>
       </div>
@@ -44,18 +43,7 @@ export default function WorkPage() {
             <p className="mt-3 max-w-2xl text-foreground/70">{featured.summary}</p>
 
             {featured.architecture && (
-              <div className="relative mt-6 h-36 overflow-hidden rounded-lg border border-black/10 sm:h-44 dark:border-white/10">
-                <NetworkVisual
-                  mode="pipeline"
-                  count={featured.architecture.length}
-                  travelerCount={4}
-                  className="absolute inset-0"
-                />
-              </div>
-            )}
-
-            {featured.architecture && (
-              <div className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-3 font-mono text-xs text-foreground/60">
+              <div className="mt-6 flex flex-wrap items-center gap-x-2 gap-y-3 font-mono text-xs text-foreground/60">
                 {featured.architecture.map((stage, i) => (
                   <span key={stage} className="flex items-center gap-2">
                     <span className="rounded border border-black/10 bg-background px-2.5 py-1.5 dark:border-white/10">
@@ -93,7 +81,7 @@ export default function WorkPage() {
       )}
 
       <Reveal className="mt-16">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50">
+        <h2 className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
           Selected work
         </h2>
       </Reveal>
