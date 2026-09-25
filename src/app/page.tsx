@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Reveal } from "@/components/Reveal";
@@ -29,7 +30,19 @@ export default function Home() {
           fadeDistance={600}
           className="relative z-10 mx-auto flex h-full max-w-5xl flex-col justify-center px-6"
         >
-          <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">
+          <div className="flex items-center gap-3">
+            <Image
+              src={siteConfig.avatarUrl}
+              alt={siteConfig.name}
+              width={56}
+              height={56}
+              priority
+              className="h-14 w-14 rounded-full object-cover ring-2 ring-accent/30"
+            />
+            <p className="font-mono text-sm font-medium">{siteConfig.name}</p>
+          </div>
+
+          <p className="mt-4 font-mono text-xs tracking-[0.2em] text-accent uppercase">
             Cybersecurity × Software × Research
           </p>
 

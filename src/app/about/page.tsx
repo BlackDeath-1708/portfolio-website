@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { SkillLayers } from "@/components/SkillLayers";
 import { SplitReveal } from "@/components/SplitReveal";
@@ -17,10 +18,34 @@ const skillLayers = Object.entries(skills).map(([label, items]) => ({ label, ite
 
 export default function AboutPage() {
   return (
-    <div>
-      <section className="flex min-h-screen flex-col justify-center px-6 py-24">
-        <div className="mx-auto w-full max-w-5xl">
-          <div className="flex items-baseline gap-3">
+    <div data-theme="dark" className="bg-background">
+      <section className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 py-24">
+        <Image
+          src="/about-hero-bg.jpg"
+          alt=""
+          aria-hidden="true"
+          fill
+          priority
+          sizes="100vw"
+          className="scale-110 object-cover object-[88%_30%] opacity-70 blur-sm dark:opacity-78"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, var(--background) 0%, var(--background) 15%, color-mix(in srgb, var(--background) 80%, transparent) 35%, color-mix(in srgb, var(--background) 50%, transparent) 55%, color-mix(in srgb, var(--background) 20%, transparent) 75%, transparent 100%)",
+          }}
+        />
+
+        <div className="relative mx-auto w-full max-w-5xl">
+          <Image
+            src={siteConfig.avatarUrl}
+            alt={siteConfig.name}
+            width={128}
+            height={128}
+            className="h-32 w-32 rounded-full object-cover ring-2 ring-accent/30"
+          />
+          <div className="mt-8 flex items-baseline gap-3">
             <span className="h-px w-8 bg-accent" />
             <p className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
               About

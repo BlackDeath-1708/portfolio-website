@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { siteConfig } from "@/lib/site-config";
@@ -33,8 +34,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col">
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`(function(){try{var t=localStorage.getItem("theme");document.documentElement.dataset.theme=(t==="light")?"light":"dark";}catch(e){}})();`}
+        </Script>
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />

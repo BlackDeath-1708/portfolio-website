@@ -24,6 +24,7 @@ export const siteConfig = {
   github: "https://github.com/BlackDeath-1708",
   linkedin: "https://linkedin.com/in/sudhareshan-v-b99733144",
   resumeUrl: "/Sudhareshan_V_Resume.pdf",
+  avatarUrl: "/avatar.jpg",
   url: "https://www.sudhareshan.me",
   nav: [
     { label: "Home", href: "/" },

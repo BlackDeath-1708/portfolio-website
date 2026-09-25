@@ -2,11 +2,17 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { Magnetic } from "@/components/Magnetic";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { siteConfig } from "@/lib/site-config";
 
+const FORCED_DARK_ROUTES = new Set(["/about"]);
+
 export function Nav() {
+  const pathname = usePathname();
+  const forceDark = FORCED_DARK_ROUTES.has(pathname);
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -58,6 +64,7 @@ export function Nav() {
 
   return (
     <header
+      data-theme={forceDark ? "dark" : undefined}
       className={`fixed top-0 z-30 w-full transition-[padding,background-color,backdrop-filter] duration-300 ${
         isScrolled
           ? "border-b border-black/5 bg-background/80 py-3 backdrop-blur-2xl backdrop-saturate-150 dark:border-white/5"
@@ -87,21 +94,25 @@ export function Nav() {
           ))}
         </nav>
 
-        <button
-          type="button"
-          onClick={() => setIsOpen((prev) => !prev)}
-          aria-expanded={isOpen}
-          aria-controls="mobile-nav"
-          aria-label={isOpen ? "Close menu" : "Open menu"}
-          className="relative z-40 flex h-8 w-8 flex-col items-center justify-center gap-1.5 sm:hidden"
-        >
-          <span
-            className={`h-px w-5 bg-foreground transition-transform ${isOpen ? "translate-y-[3.5px] rotate-45" : ""}`}
-          />
-          <span
-            className={`h-px w-5 bg-foreground transition-transform ${isOpen ? "-translate-y-[3.5px] -rotate-45" : ""}`}
-          />
-        </button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+
+          <button
+            type="button"
+            onClick={() => setIsOpen((prev) => !prev)}
+            aria-expanded={isOpen}
+            aria-controls="mobile-nav"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            className="relative z-40 flex h-8 w-8 flex-col items-center justify-center gap-1.5 sm:hidden"
+          >
+            <span
+              className={`h-px w-5 bg-foreground transition-transform ${isOpen ? "translate-y-[3.5px] rotate-45" : ""}`}
+            />
+            <span
+              className={`h-px w-5 bg-foreground transition-transform ${isOpen ? "-translate-y-[3.5px] -rotate-45" : ""}`}
+            />
+          </button>
+        </div>
       </div>
 
       <div
