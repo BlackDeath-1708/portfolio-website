@@ -12,17 +12,17 @@ export type Packet = { from: FieldNode; to: FieldNode; t: number; speed: number 
 export type Pointer = { x: number; y: number; active: boolean };
 export type FieldColors = { line: string; accent: string };
 
-const PX_PER_NODE = 16000;
+const PX_PER_NODE = 20000;
 const MIN_NODES = 24;
-const MAX_NODES = 110;
+const MAX_NODES = 80;
 const MAX_SPEED = 0.22;
 const LINK_DISTANCE = 150;
-const LINK_ALPHA = 0.28;
-const NODE_ALPHA = 0.55;
+const LINK_ALPHA = 0.18;
+const NODE_ALPHA = 0.4;
 const POINTER_RADIUS = 190;
-const POINTER_ALPHA = 0.5;
-const PACKET_SPAWN_CHANCE = 0.03;
-const MAX_PACKETS = 7;
+const POINTER_ALPHA = 0.35;
+const PACKET_SPAWN_CHANCE = 0.02;
+const MAX_PACKETS = 5;
 const PARALLAX = 0.08;
 
 export function nodeCountFor(width: number, height: number): number {

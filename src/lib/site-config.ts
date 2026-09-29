@@ -1,6 +1,10 @@
 export const siteConfig = {
   name: "Sudhareshan V",
   title: "Cybersecurity Engineer & Software Developer",
+  positioning: "Cybersecurity × Software × Research",
+  headline: "I build systems that understand the network.",
+  heroSupport:
+    "Security engineering, backend systems and applied research — from packet-level controls to production-ready applications.",
   tagline:
     "Building backend services and full-stack applications, with a focus on security tooling and network defense.",
   bio: "Final-year Computer Science (Cyber Security) student who builds full-stack software and kernel-level (eBPF) security programs. Research intern at CAIR, DRDO, and former co-founder and CTO of a cybersecurity startup.",
@@ -27,7 +31,6 @@ export const siteConfig = {
   avatarUrl: "/avatar.jpg",
   url: "https://www.sudhareshan.me",
   nav: [
-    { label: "Home", href: "/" },
     { label: "Work", href: "/work" },
     { label: "Research", href: "/research" },
     { label: "Writing", href: "/writing" },

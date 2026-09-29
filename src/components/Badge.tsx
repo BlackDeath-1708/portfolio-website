@@ -4,7 +4,7 @@ type Props = {
 
 export function Badge({ children }: Props) {
   return (
-    <span className="rounded-full bg-accent/10 px-2.5 py-1 font-mono text-xs text-accent">
+    <span className="inline-block rounded-md border border-line bg-foreground/[0.03] px-2 py-1 font-mono text-[11px] leading-none text-foreground/75">
       {children}
     </span>
   );
