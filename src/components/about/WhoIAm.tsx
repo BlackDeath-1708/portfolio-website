@@ -25,10 +25,10 @@ export function WhoIAm() {
             <Image
               src="/portrait.jpg"
               alt={`Photo of ${siteConfig.name}`}
-              width={96}
-              height={96}
+              width={112}
+              height={112}
               quality={90}
-              className="h-24 w-24 rounded-full object-cover ring-2 ring-accent/40 ring-offset-4 ring-offset-background"
+              className="h-28 w-28 rounded-full object-cover ring-2 ring-accent/40 ring-offset-4 ring-offset-background"
             />
             <div>
               <p className="text-lg font-semibold">{siteConfig.name}</p>
