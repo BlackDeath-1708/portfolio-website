@@ -14,7 +14,7 @@ const IMAGE_ALT = "Illustration of Sudhareshan working at a laptop";
 const DOT_TONES = { accent: "bg-accent", violet: "bg-violet", success: "bg-success" } as const;
 const CALLOUT_DELAY_MS = 180;
 
-/** Floating glass callouts pinned to the illustration's empty areas — real work areas, real stacks. */
+/** Floating glass labels pinned to the illustration's empty areas. */
 function HeroCallouts() {
   return (
     <>
@@ -25,21 +25,11 @@ function HeroCallouts() {
           style={{ animationDelay: `${600 + i * CALLOUT_DELAY_MS}ms` }}
         >
           <div
-            className="glass float-slow min-w-[220px] rounded-2xl px-4 py-3 shadow-2xl shadow-black/25"
-            style={{ animationDelay: `${i * -2.3}s` }}
+            className="glass float-slow flex items-center gap-2.5 rounded-full py-2 pr-4 pl-3 shadow-xl shadow-black/25"
+            style={{ animationDelay: `${i * -1.7}s` }}
           >
-            <div className="flex items-center gap-2">
-              <span className={`h-1.5 w-1.5 rounded-full ${DOT_TONES[callout.tone]} shadow-[0_0_8px_currentColor]`} />
-              <span className="font-mono text-[10px] tracking-[0.18em] text-foreground-muted uppercase">
-                {callout.label}
-              </span>
-              {callout.tag && (
-                <span className="ml-auto rounded-full border border-violet/40 px-1.5 py-px font-mono text-[9px] text-violet">
-                  {callout.tag}
-                </span>
-              )}
-            </div>
-            <p className="mt-1.5 text-[13px] font-medium text-foreground">{callout.meta}</p>
+            <span className={`h-1.5 w-1.5 rounded-full ${DOT_TONES[callout.tone]} shadow-[0_0_8px_currentColor]`} />
+            <span className="text-sm font-medium text-foreground">{callout.label}</span>
           </div>
         </div>
       ))}
