@@ -24,6 +24,7 @@ const DIRS: Record<string, string> = {
 
 const HELP = [
   "whoami               who is this",
+  "focus                what I'm working on",
   "ls projects/         list featured projects",
   "cat <project>        one-line summary",
   "open <project>       go to the project page",
@@ -49,6 +50,8 @@ export function runCommand(input: string): CommandResult {
       return { lines: HELP };
     case "whoami":
       return { lines: ["Cybersecurity Engineer", "Software Developer", "Researcher"] };
+    case "focus":
+      return { lines: ["network-security", "endpoint-security", "security-research", "software-engineering"] };
     case "ls":
       if (arg && !/^projects\/?$/.test(arg)) return { lines: [`ls: ${arg}: No such file or directory`], isError: true };
       return { lines: [Object.keys(DIRS).map((dir) => `${dir}/`).join("  ")] };

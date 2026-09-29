@@ -1,8 +1,7 @@
-import { Magnetic } from "@/components/Magnetic";
+import { CtaCard } from "@/components/CtaCard";
 import { Reveal } from "@/components/Reveal";
-import { buttonPrimary, buttonSecondary, eyebrow } from "@/components/ui/styles";
-import { cta, systemStatus } from "@/lib/home-content";
-import { siteConfig } from "@/lib/site-config";
+import { eyebrow } from "@/components/ui/styles";
+import { systemStatus } from "@/lib/home-content";
 
 const TONES = { success: "text-success", accent: "text-accent" } as const;
 
@@ -32,25 +31,7 @@ export function ClosingCta() {
         </Reveal>
 
         <Reveal delay={100}>
-          <div className="card glow relative h-full overflow-hidden p-8 sm:p-12">
-            <h2 id="cta-title" className="max-w-xl text-3xl leading-tight font-semibold tracking-tight sm:text-5xl">
-              {cta.lead} <span className="text-gradient">{cta.highlight}</span>
-            </h2>
-            <p className="mt-4 max-w-lg text-base leading-relaxed text-foreground/70">{cta.support}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Magnetic>
-                <a href={`mailto:${siteConfig.email}`} className={buttonPrimary}>
-                  Start a conversation <span aria-hidden>↗</span>
-                </a>
-              </Magnetic>
-              <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className={buttonSecondary}>
-                GitHub
-              </a>
-              <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer" className={buttonSecondary}>
-                LinkedIn
-              </a>
-            </div>
-          </div>
+          <CtaCard />
         </Reveal>
       </div>
     </section>

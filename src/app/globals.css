@@ -193,6 +193,47 @@ body::before {
   }
 }
 
+/* Scroll-drawn connectors: start hidden and draw in when their Reveal
+   ancestor becomes visible. SVG strokes need pathLength="1". */
+.draw-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+.grow-x,
+.grow-y {
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+.grow-x {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.grow-y {
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.activate {
+  opacity: 0.35;
+  transition: opacity 0.6s ease;
+}
+
+.reveal-visible .draw-line {
+  stroke-dashoffset: 0;
+}
+
+.reveal-visible .grow-x,
+.reveal-visible .grow-y {
+  transform: none;
+}
+
+.reveal-visible .activate {
+  opacity: 1;
+}
+
 @keyframes status-pulse {
   0% {
     transform: scale(0.6);
@@ -205,6 +246,22 @@ body::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .draw-line {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+
+  .grow-x,
+  .grow-y {
+    transform: none;
+    transition: none;
+  }
+
+  .activate {
+    opacity: 1;
+    transition: none;
+  }
+
   .flow-line,
   .flow-line-slow {
     animation: none;

@@ -7,7 +7,11 @@ type Props = {
   text: string;
   className?: string;
   delay?: number;
+  /** Optional per-word classes, keyed by the word without trailing punctuation. */
+  highlights?: Record<string, string>;
 };
+
+const TRAILING_PUNCTUATION = /^(.*?)([.,;:!?]*)$/;
 
 /**
  * Splits text into words, each masked by an overflow-hidden wrapper, and
@@ -15,7 +19,7 @@ type Props = {
  * pattern for hero headlines. Skips the animation entirely under
  * prefers-reduced-motion.
  */
-export function SplitReveal({ text, className, delay = 0 }: Props) {
+export function SplitReveal({ text, className, delay = 0, highlights }: Props) {
   const containerRef = useRef<HTMLSpanElement>(null);
   const words = text.split(" ");
 
@@ -47,14 +51,19 @@ export function SplitReveal({ text, className, delay = 0 }: Props) {
 
   return (
     <span ref={containerRef} className={className}>
-      {words.map((word, i) => (
-        <span key={i} className="inline-block overflow-hidden pb-1">
-          <span data-word className="inline-block">
-            {word}
-            {i < words.length - 1 ? " " : ""}
+      {words.map((word, i) => {
+        const [, core, punctuation] = word.match(TRAILING_PUNCTUATION) ?? [word, word, ""];
+        const highlight = highlights?.[core];
+        return (
+          <span key={i} className="inline-block overflow-hidden pb-1">
+            <span data-word className="inline-block">
+              {highlight ? <span className={highlight}>{core}</span> : core}
+              {punctuation}
+              {i < words.length - 1 ? " " : ""}
+            </span>
           </span>
-        </span>
-      ))}
+        );
+      })}
     </span>
   );
 }
