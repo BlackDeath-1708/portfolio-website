@@ -21,6 +21,22 @@ export const aboutStats: Stat[] = [
   { value: siteConfig.education.graduation, label: "Graduation" },
 ];
 
+export type HeroCallout = {
+  label: string;
+  meta: string;
+  tone: "accent" | "violet" | "success";
+  tag?: string;
+  /** Position within the hero backdrop, chosen to sit in the image's empty areas. */
+  position: string;
+};
+
+/** Real work areas with their actual stacks (see projects.ts / site-config.ts "now"). */
+export const heroCallouts: HeroCallout[] = [
+  { label: "Network security", meta: "Zeek · Kafka · ML detectors", tone: "accent", position: "top-[15%] right-[6%]" },
+  { label: "Kernel security", meta: "eBPF · XDP · BPF-LSM", tone: "violet", tag: "building", position: "top-[41%] right-[3%]" },
+  { label: "Software", meta: "Python · Django · React", tone: "success", position: "bottom-[29%] right-[24%]" },
+];
+
 export const identity = [
   { key: "Name", value: siteConfig.name },
   { key: "Focus", value: "Security · Software · Research" },

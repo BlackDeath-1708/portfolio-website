@@ -4,46 +4,46 @@ import { Magnetic } from "@/components/Magnetic";
 import { Reveal } from "@/components/Reveal";
 import { SplitReveal } from "@/components/SplitReveal";
 import { buttonPrimary, buttonSecondary, eyebrow } from "@/components/ui/styles";
-import { aboutHero, aboutStats, identity } from "@/lib/about-content";
+import { aboutHero, aboutStats, heroCallouts, identity } from "@/lib/about-content";
 import { siteConfig } from "@/lib/site-config";
 
 const HEADLINE = "I build at the intersection of security, systems and software.";
 const HIGHLIGHTS = { security: "text-accent", systems: "text-accent", software: "text-violet" };
 const IMAGE_ALT = "Illustration of Sudhareshan working at a laptop";
 
-/**
- * Network → systems → software → research, routed around the frame edges so
- * the overlay never sits on the illustration's subject.
- */
-const NODES = [
-  { label: "Network", x: 250, y: 70 },
-  { label: "Systems", x: 520, y: 150 },
-  { label: "Software", x: 545, y: 370 },
-  { label: "Research", x: 440, y: 450 },
-] as const;
-const ROUTE = "M250,70 C360,40 470,80 520,150 S585,290 545,370 S470,450 440,450";
+const DOT_TONES = { accent: "bg-accent", violet: "bg-violet", success: "bg-success" } as const;
+const CALLOUT_DELAY_MS = 180;
 
-function NetworkOverlay({ className }: { className?: string }) {
+/** Floating glass callouts pinned to the illustration's empty areas — real work areas, real stacks. */
+function HeroCallouts() {
   return (
-    <svg viewBox="0 0 600 640" className={className} aria-hidden preserveAspectRatio="xMidYMid meet">
-      <path d={ROUTE} fill="none" className="stroke-accent/30" strokeWidth="1.2" />
-      <path d={ROUTE} fill="none" className="flow-line stroke-accent" strokeWidth="1.6" />
-      {NODES.map((node) => (
-        <g key={node.label}>
-          <circle cx={node.x} cy={node.y} r="9" className="fill-background/70 stroke-accent/80" />
-          <circle cx={node.x} cy={node.y} r="4" className="fill-accent" />
-          <text
-            x={node.x + (node.x < 300 ? 18 : -18)}
-            y={node.y + 4}
-            textAnchor={node.x < 300 ? "start" : "end"}
-            className="fill-foreground/90 font-mono text-[10px] tracking-[0.2em] uppercase"
-            style={{ paintOrder: "stroke", stroke: "var(--background)", strokeWidth: 3, strokeOpacity: 0.6 }}
+    <>
+      {heroCallouts.map((callout, i) => (
+        <div
+          key={callout.label}
+          className={`absolute ${callout.position} animate-[callout-in_0.8s_cubic-bezier(0.16,1,0.3,1)_both] motion-reduce:animate-none`}
+          style={{ animationDelay: `${600 + i * CALLOUT_DELAY_MS}ms` }}
+        >
+          <div
+            className="glass float-slow min-w-[220px] rounded-2xl px-4 py-3 shadow-2xl shadow-black/25"
+            style={{ animationDelay: `${i * -2.3}s` }}
           >
-            {node.label}
-          </text>
-        </g>
+            <div className="flex items-center gap-2">
+              <span className={`h-1.5 w-1.5 rounded-full ${DOT_TONES[callout.tone]} shadow-[0_0_8px_currentColor]`} />
+              <span className="font-mono text-[10px] tracking-[0.18em] text-foreground-muted uppercase">
+                {callout.label}
+              </span>
+              {callout.tag && (
+                <span className="ml-auto rounded-full border border-violet/40 px-1.5 py-px font-mono text-[9px] text-violet">
+                  {callout.tag}
+                </span>
+              )}
+            </div>
+            <p className="mt-1.5 text-[13px] font-medium text-foreground">{callout.meta}</p>
+          </div>
+        </div>
       ))}
-    </svg>
+    </>
   );
 }
 
@@ -66,7 +66,7 @@ function DesktopBackdrop() {
             "linear-gradient(to right, var(--background) 0%, color-mix(in srgb, var(--background) 70%, transparent) 25%, transparent 60%), linear-gradient(to top, var(--background) 0%, transparent 35%)",
         }}
       />
-      <NetworkOverlay className="absolute inset-0 h-full w-full" />
+      <HeroCallouts />
     </div>
   );
 }
