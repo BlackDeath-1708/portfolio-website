@@ -4,6 +4,8 @@ export type Post = {
   excerpt: string;
   date: string;
   readingTime: string;
+  topic: string;
+  tags: string[];
   content: string;
 };
 
@@ -15,6 +17,8 @@ export const posts: Post[] = [
       "A detector that never fires isn't always a broken model — sometimes the data never reaches it. Notes on a Zeek log join bug in ODIN.",
     date: "2026-08-15",
     readingTime: "4 min",
+    topic: "Detection engineering",
+    tags: ["Zeek", "TLS", "Debugging"],
     content: `In ODIN, TLS-wrapped malware detection works by looking at JA3/JA4 fingerprints from Zeek's \`ssl.log\` — no decryption involved, just the shape of the handshake. It was trained, tested, and wired into the pipeline. And on real traffic, it never fired. Not "rarely." Never.
 
 The instinct when a detector goes quiet is to blame the model: bad threshold, distribution shift between training and live data, something statistical. I spent longer than I'd like to admit down that path before stepping back and checking the thing that's easy to assume is fine: whether the detector was actually *receiving* the rows I thought it was.
@@ -37,6 +41,8 @@ It's also why ODIN's own docs are explicit about which detectors are validated a
       "The endpoint firewall needed to police encrypted connections without becoming a TLS-terminating proxy. JA3 and SNI turned out to be enough.",
     date: "2026-06-02",
     readingTime: "3 min",
+    topic: "Network policy",
+    tags: ["TLS", "JA3", "SNI"],
     content: `Most of the traffic a host-based firewall needs to police today is encrypted, which means the obvious options — deep packet inspection, TLS termination and re-encryption — either don't work or introduce exactly the kind of trust boundary you're trying to avoid. Decrypting a process's traffic to decide whether to allow it defeats a fair amount of the point.
 
 The endpoint application firewall I built instead treats the TLS handshake itself as the signal, not the payload behind it. Two fields do almost all the work:

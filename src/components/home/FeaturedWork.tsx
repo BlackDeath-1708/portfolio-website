@@ -75,7 +75,7 @@ export function FeaturedWork() {
   const featured = projects.filter((project) => project.featured);
 
   return (
-    <section aria-labelledby="featured-title" className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
+    <section aria-labelledby="featured-title" className="mx-auto max-w-6xl px-6 py-16 sm:py-24">
       <Reveal>
         <SectionHeading
           id="featured-title"
