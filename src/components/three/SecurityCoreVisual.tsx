@@ -1,36 +1,52 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useRef, useState, type RefObject } from "react";
+import { useEffect, useState, type RefObject } from "react";
+import { CoreFallback } from "@/components/three/CoreFallback";
 
 const SecurityCore = dynamic(() => import("./SecurityCore").then((m) => m.SecurityCore), {
   ssr: false,
 });
+
+const MIN_3D_WIDTH = 640;
+const START_DELAY_MS = 250;
 
 type Props = {
   scrollProgress: RefObject<number>;
   className?: string;
 };
 
+/**
+ * Progressive Security Core: the SVG fallback renders immediately; on
+ * tablet/desktop without reduced motion, the WebGL scene lazy-loads after
+ * first paint and crossfades in over it.
+ */
 export function SecurityCoreVisual({ scrollProgress, className }: Props) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [shouldRender, setShouldRender] = useState(false);
+  const [shouldRender3D, setShouldRender3D] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
-    // Skip entirely on small phones — not just CSS-hidden, since a hidden
-    // canvas still burns GPU on a continuous render loop. Full 3D from
-    // tablet width up, per the brief's own "simplified 3D on mobile" call.
-    if (window.innerWidth < 640) return;
-
-    const id = window.setTimeout(() => setShouldRender(true), 250);
+    // Skip WebGL entirely on phones — a hidden canvas would still burn GPU.
+    if (prefersReducedMotion || window.innerWidth < MIN_3D_WIDTH) return;
+    const id = window.setTimeout(() => setShouldRender3D(true), START_DELAY_MS);
     return () => window.clearTimeout(id);
   }, []);
 
   return (
-    <div ref={ref} className={className} aria-hidden>
-      {shouldRender && <SecurityCore scrollProgress={scrollProgress} />}
+    <div className={`relative ${className ?? ""}`} aria-hidden>
+      <CoreFallback
+        className={`absolute inset-0 m-auto h-full w-full max-w-[520px] transition-opacity duration-700 ${
+          isReady ? "opacity-0" : "opacity-100"
+        }`}
+      />
+      {shouldRender3D && (
+        <div
+          className={`absolute inset-0 transition-opacity duration-1000 ${isReady ? "opacity-100" : "opacity-0"}`}
+        >
+          <SecurityCore scrollProgress={scrollProgress} onReady={() => setIsReady(true)} />
+        </div>
+      )}
     </div>
   );
 }

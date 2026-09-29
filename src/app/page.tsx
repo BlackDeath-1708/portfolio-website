@@ -1,98 +1,16 @@
-import Image from "next/image";
 import Link from "next/link";
+import { Hero } from "@/components/home/Hero";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Reveal } from "@/components/Reveal";
-import { Magnetic } from "@/components/Magnetic";
-import { ScrollFade } from "@/components/ScrollFade";
-import { SplitReveal } from "@/components/SplitReveal";
-import { HeroScene } from "@/components/HeroScene";
-import { achievements, experience } from "@/lib/resume";
 import { projects } from "@/lib/projects";
-import { siteConfig } from "@/lib/site-config";
 import { posts } from "@/lib/writing";
-
-const stats = [
-  { value: String(projects.length), label: "Projects shipped" },
-  { value: String(experience.length), label: "Professional roles" },
-  { value: String(achievements.length), label: "Hackathon results" },
-  { value: siteConfig.education.graduation, label: "Graduation" },
-];
 
 export default function Home() {
   const highlights = projects.filter((project) => project.featured);
 
   return (
     <div>
-      <section className="relative h-screen min-h-[720px] overflow-hidden border-b border-black/10 dark:border-white/10">
-        <HeroScene />
-
-        <ScrollFade
-          fadeDistance={600}
-          className="relative z-10 mx-auto flex h-full max-w-5xl flex-col justify-center px-6"
-        >
-          <div className="flex items-center gap-3">
-            <Image
-              src={siteConfig.avatarUrl}
-              alt={siteConfig.name}
-              width={56}
-              height={56}
-              priority
-              className="h-14 w-14 rounded-full object-cover ring-2 ring-accent/30"
-            />
-            <p className="font-mono text-sm font-medium">{siteConfig.name}</p>
-          </div>
-
-          <p className="mt-4 font-mono text-xs tracking-[0.2em] text-accent uppercase">
-            Cybersecurity × Software × Research
-          </p>
-
-          <h1 className="mt-6 max-w-2xl text-5xl leading-[1.05] font-bold tracking-tight sm:text-7xl">
-            <SplitReveal text="Engineering systems that stay ahead." />
-          </h1>
-
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/70">
-            {siteConfig.tagline}
-          </p>
-          <p className="mt-3 font-mono text-xs text-foreground-muted">
-            {siteConfig.location} · {siteConfig.openTo}
-          </p>
-
-          <div className="mt-10 flex flex-wrap gap-4 text-sm font-medium">
-            <Magnetic>
-              <Link
-                href="/work"
-                className="inline-block rounded-full bg-accent px-5 py-2.5 text-accent-foreground transition-opacity hover:opacity-90"
-              >
-                Explore my work →
-              </Link>
-            </Magnetic>
-            <Magnetic>
-              <a
-                href={siteConfig.resumeUrl}
-                download
-                className="inline-block rounded-full border border-black/10 px-5 py-2.5 transition-colors hover:border-accent/40 dark:border-white/10"
-              >
-                View résumé
-              </a>
-            </Magnetic>
-          </div>
-        </ScrollFade>
-      </section>
-
-      <section className="relative z-10 border-b border-black/10 bg-background/70 backdrop-blur-sm dark:border-white/10">
-        <div className="mx-auto grid max-w-5xl grid-cols-2 divide-x divide-y divide-black/10 px-6 sm:grid-cols-4 sm:divide-y-0 dark:divide-white/10">
-          {stats.map((stat) => (
-            <div key={stat.label} className="py-8 text-center sm:text-left sm:px-2">
-              <p className="font-mono text-3xl font-bold text-accent sm:text-4xl">
-                {stat.value}
-              </p>
-              <p className="mt-1 text-xs uppercase tracking-widest text-foreground-muted">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <Hero />
 
       <section className="mx-auto max-w-5xl px-6 py-20">
         <Reveal>
