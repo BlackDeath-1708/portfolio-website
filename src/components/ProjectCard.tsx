@@ -1,47 +1,73 @@
 import Link from "next/link";
 import { Badge } from "@/components/Badge";
+import { Tilt } from "@/components/Tilt";
+import { projectVisuals } from "@/components/visuals";
+import { StackVisual } from "@/components/visuals/StackVisual";
 import type { Project } from "@/lib/projects";
+
+const MAX_TAGS = 4;
+
+export function splitTitle(title: string): { main: string; sub?: string } {
+  const [main, sub] = title.split(" — ");
+  return { main, sub };
+}
 
 type Props = {
   project: Project;
   index: number;
 };
 
+/** Project card with its custom visual, stretched link, and a separate GitHub link. */
 export function ProjectCard({ project, index }: Props) {
+  const Visual = projectVisuals[project.slug];
+  const { main, sub } = splitTitle(project.title);
+
   return (
-    <Link
-      href={`/work/${project.slug}`}
-      className="group flex flex-col gap-3 border-b border-black/10 py-8 transition-colors first:border-t dark:border-white/10 sm:flex-row sm:items-baseline sm:gap-8"
-    >
-      <span className="font-mono text-sm text-foreground-muted sm:w-10 sm:shrink-0">
-        {String(index + 1).padStart(2, "0")}
-      </span>
-      <div className="flex-1">
-        <div className="flex flex-wrap items-center gap-2">
-          <h3 className="text-lg font-semibold tracking-tight transition-colors group-hover:text-accent sm:text-xl">
-            {project.title}
-          </h3>
-          {project.caseStudy && (
-            <span className="rounded-full border border-accent/30 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-accent">
-              Case study
-            </span>
-          )}
-          <span
-            aria-hidden
-            className="translate-x-0 text-accent opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100"
-          >
-            →
-          </span>
+    <article className="group card relative flex h-full flex-col overflow-hidden transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_24px_60px_-32px_var(--accent)] has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-4 has-[a:focus-visible]:outline-accent">
+      <Tilt className="relative h-56 overflow-hidden border-b border-line bg-[radial-gradient(90%_110%_at_50%_0%,var(--glow),transparent_70%)]">
+        <div className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-[1.04]">
+          {Visual ? <Visual /> : <StackVisual stack={project.stack} />}
         </div>
-        <p className="mt-1 text-sm text-foreground/60">{project.summary}</p>
-        <ul className="mt-3 flex flex-wrap gap-2">
-          {project.stack.map((tech) => (
+      </Tilt>
+      <div className="flex flex-1 flex-col p-6">
+        <div className="flex items-center justify-between font-mono text-[11px] text-foreground-muted">
+          <span className="text-accent">{String(index + 1).padStart(2, "0")}</span>
+          <span className="tracking-wider uppercase">{project.category}</span>
+        </div>
+        <h3 className="mt-3 text-xl font-semibold tracking-tight">
+          <Link href={`/work/${project.slug}`} className="after:absolute after:inset-0 focus-visible:outline-none">
+            {main}
+          </Link>
+        </h3>
+        {sub && <p className="mt-0.5 text-sm text-accent">{sub}</p>}
+        <p className="mt-3 text-sm leading-relaxed text-foreground/65">{project.summary}</p>
+        <ul className="mt-5 flex flex-wrap gap-1.5">
+          {project.stack.slice(0, MAX_TAGS).map((tech) => (
             <li key={tech}>
               <Badge>{tech}</Badge>
             </li>
           ))}
         </ul>
+        <div className="mt-auto flex items-center justify-between pt-6 font-mono text-[11px] tracking-wider uppercase">
+          <span className="text-accent">
+            {project.caseStudy ? "Case study" : "Details"}
+            <span aria-hidden className="ml-1 inline-block transition-transform group-hover:translate-x-1">
+              →
+            </span>
+          </span>
+          {project.repoUrl && (
+            <a
+              href={project.repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${main} source on GitHub`}
+              className="relative z-10 text-foreground-muted transition-colors hover:text-foreground"
+            >
+              GitHub ↗
+            </a>
+          )}
+        </div>
       </div>
-    </Link>
+    </article>
   );
 }

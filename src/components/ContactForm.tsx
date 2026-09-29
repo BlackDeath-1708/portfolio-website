@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Magnetic } from "@/components/Magnetic";
 import { siteConfig } from "@/lib/site-config";
+import { buttonPrimary } from "@/components/ui/styles";
 
 type Errors = Partial<Record<"name" | "email" | "message", string>>;
 
@@ -46,7 +47,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="mt-10 flex max-w-xl flex-col gap-5">
+    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
       <div>
         <label htmlFor="name" className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
           Name
@@ -58,10 +59,10 @@ export function ContactForm() {
           onChange={(e) => setName(e.target.value)}
           aria-invalid={Boolean(errors.name)}
           aria-describedby={errors.name ? "name-error" : undefined}
-          className="mt-2 w-full rounded-lg border border-black/10 bg-transparent px-4 py-2.5 text-sm outline-none transition-colors focus:border-accent dark:border-white/10"
+          className="mt-2 w-full rounded-lg border border-line bg-background/50 px-4 py-2.5 text-sm outline-none transition-colors focus:border-accent"
         />
         {errors.name && (
-          <p id="name-error" className="mt-1.5 text-xs text-red-400">
+          <p id="name-error" className="mt-1.5 text-xs text-warning">
             {errors.name}
           </p>
         )}
@@ -78,10 +79,10 @@ export function ContactForm() {
           onChange={(e) => setEmail(e.target.value)}
           aria-invalid={Boolean(errors.email)}
           aria-describedby={errors.email ? "email-error" : undefined}
-          className="mt-2 w-full rounded-lg border border-black/10 bg-transparent px-4 py-2.5 text-sm outline-none transition-colors focus:border-accent dark:border-white/10"
+          className="mt-2 w-full rounded-lg border border-line bg-background/50 px-4 py-2.5 text-sm outline-none transition-colors focus:border-accent"
         />
         {errors.email && (
-          <p id="email-error" className="mt-1.5 text-xs text-red-400">
+          <p id="email-error" className="mt-1.5 text-xs text-warning">
             {errors.email}
           </p>
         )}
@@ -101,10 +102,10 @@ export function ContactForm() {
           onChange={(e) => setMessage(e.target.value)}
           aria-invalid={Boolean(errors.message)}
           aria-describedby={errors.message ? "message-error" : undefined}
-          className="mt-2 w-full resize-none rounded-lg border border-black/10 bg-transparent px-4 py-2.5 text-sm outline-none transition-colors focus:border-accent dark:border-white/10"
+          className="mt-2 w-full resize-none rounded-lg border border-line bg-background/50 px-4 py-2.5 text-sm outline-none transition-colors focus:border-accent"
         />
         {errors.message && (
-          <p id="message-error" className="mt-1.5 text-xs text-red-400">
+          <p id="message-error" className="mt-1.5 text-xs text-warning">
             {errors.message}
           </p>
         )}
@@ -114,7 +115,7 @@ export function ContactForm() {
         <Magnetic>
           <button
             type="submit"
-            className="w-fit rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
+            className={`${buttonPrimary} w-fit`}
           >
             Send message
           </button>

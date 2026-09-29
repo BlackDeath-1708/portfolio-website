@@ -32,14 +32,14 @@ export function ProjectList({ projects }: Props) {
             className={`rounded-full border px-3.5 py-1.5 font-mono text-xs uppercase tracking-wider transition-colors ${
               active === category
                 ? "border-accent bg-accent/10 text-accent"
-                : "border-black/10 text-foreground/60 hover:border-accent/40 dark:border-white/10"
+                : "border-line text-foreground/60 hover:border-accent/40"
             }`}
           >
             {category}
           </button>
         ))}
       </div>
-      <div className="mt-6">
+      <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((project, index) => (
           <Reveal key={project.slug} delay={index * 60}>
             <ProjectCard project={project} index={index} />

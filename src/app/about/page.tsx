@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { SkillLayers } from "@/components/SkillLayers";
 import { SplitReveal } from "@/components/SplitReveal";
+import { InfoGrid } from "@/components/ui/InfoGrid";
 import { achievements, experience, skills } from "@/lib/resume";
 import { siteConfig } from "@/lib/site-config";
 
@@ -26,7 +27,7 @@ export default function AboutPage() {
           aria-hidden="true"
           fill
           priority
-          sizes="100vw"
+          sizes="(min-width: 640px) 100vw, 1px"
           className="hidden scale-110 object-cover object-[88%_30%] opacity-78 blur-sm sm:block"
         />
         <div
@@ -43,7 +44,7 @@ export default function AboutPage() {
           aria-hidden="true"
           fill
           priority
-          sizes="100vw"
+          sizes="(min-width: 640px) 1px, 100vw"
           className="block scale-110 object-cover object-center opacity-65 blur-sm sm:hidden"
         />
         <div
@@ -74,7 +75,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-t border-black/5 px-6 py-24 dark:border-white/5">
+      <section className="border-t border-line px-6 py-24">
         <div className="mx-auto w-full max-w-5xl">
           <Reveal>
             <div className="flex max-w-2xl flex-col gap-6 text-xl leading-relaxed text-foreground/80">
@@ -84,7 +85,7 @@ export default function AboutPage() {
             </div>
           </Reveal>
           <Reveal delay={120} className="mt-10">
-            <div className="flex items-center gap-3 rounded-lg border border-black/10 px-5 py-4 dark:border-white/10">
+            <div className="card flex items-center gap-3 px-5 py-4">
               <span className="status-dot shrink-0" />
               <p className="font-mono text-xs text-foreground/60 sm:text-sm">
                 <span className="text-accent">Now —</span> {siteConfig.now}
@@ -94,13 +95,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-t border-black/5 px-6 py-24 dark:border-white/5">
+      <section className="border-t border-line px-6 py-24">
         <div className="mx-auto w-full max-w-5xl">
           <Reveal>
             <h2 className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
               Experience
             </h2>
-            <div className="relative mt-8 flex flex-col gap-12 border-l border-black/10 pl-8 dark:border-white/10">
+            <div className="relative mt-8 flex flex-col gap-12 border-l border-line pl-8">
               {experience.map((job) => (
                 <div key={job.role} className="relative">
                   <span className="absolute top-1.5 -left-[calc(2rem+4.5px)] h-2.5 w-2.5 rounded-full bg-accent" />
@@ -121,7 +122,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-t border-black/5 px-6 py-24 dark:border-white/5">
+      <section className="border-t border-line px-6 py-24">
         <div className="mx-auto w-full max-w-5xl">
           <Reveal>
             <h2 className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
@@ -137,49 +138,22 @@ export default function AboutPage() {
             <h2 className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
               Education
             </h2>
-            <div className="mt-8 grid gap-x-8 gap-y-4 rounded-lg border border-black/10 p-6 sm:grid-cols-2 dark:border-white/10">
-              <div>
-                <p className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
-                  Degree
-                </p>
-                <p className="mt-1 text-sm text-foreground/80">{siteConfig.education.degree}</p>
-              </div>
-              <div>
-                <p className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
-                  Specialization
-                </p>
-                <p className="mt-1 text-sm text-foreground/80">
-                  {siteConfig.education.specialization}
-                </p>
-              </div>
-              <div>
-                <p className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
-                  Institution
-                </p>
-                <p className="mt-1 text-sm text-foreground/80">
-                  {siteConfig.education.institution}
-                </p>
-              </div>
-              <div>
-                <p className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
-                  Graduation
-                </p>
-                <p className="mt-1 text-sm text-foreground/80">
-                  {siteConfig.education.graduation}
-                </p>
-              </div>
-              <div className="sm:col-span-2">
-                <p className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
-                  Focus
-                </p>
-                <p className="mt-1 text-sm text-foreground/80">{siteConfig.education.focus}</p>
-              </div>
+            <div className="mt-8">
+              <InfoGrid
+                items={[
+                  { label: "Degree", value: siteConfig.education.degree },
+                  { label: "Specialization", value: siteConfig.education.specialization },
+                  { label: "Institution", value: siteConfig.education.institution },
+                  { label: "Graduation", value: siteConfig.education.graduation },
+                  { label: "Focus", value: siteConfig.education.focus, wide: true },
+                ]}
+              />
             </div>
           </Reveal>
         </div>
       </section>
 
-      <section className="border-t border-black/5 px-6 py-24 dark:border-white/5">
+      <section className="border-t border-line px-6 py-24">
         <div className="mx-auto w-full max-w-5xl">
           <Reveal>
             <h2 className="font-mono text-xs uppercase tracking-widest text-foreground-muted">

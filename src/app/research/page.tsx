@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Badge } from "@/components/Badge";
 import { Reveal } from "@/components/Reveal";
+import { InfoGrid } from "@/components/ui/InfoGrid";
+import { PageHeader } from "@/components/ui/PageHeader";
+import { eyebrow } from "@/components/ui/styles";
 import { research } from "@/lib/research";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Research",
@@ -11,45 +15,61 @@ export const metadata: Metadata = {
 
 export default function ResearchPage() {
   return (
-    <div className="mx-auto max-w-5xl px-6 py-20">
-      <div className="flex items-baseline gap-3">
-        <span className="h-px w-8 bg-accent" />
-        <h1 className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
-          Research
-        </h1>
-      </div>
-      <p className="mt-4 max-w-xl text-lg text-foreground/70">
-        Ongoing research work, outside of shipped projects.
-      </p>
+    <>
+      <PageHeader
+        label="Research"
+        title="Network security research, in progress."
+        lead="Applied research outside of shipped projects. The work itself is confidential — what can be shared is below."
+      />
 
-      <div className="mt-10 flex flex-col gap-6">
-        {research.map((entry, index) => (
-          <Reveal key={entry.slug} delay={index * 60}>
-            <div className="rounded-lg border border-black/10 p-6 dark:border-white/10 sm:p-8">
-              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                <h2 className="text-xl font-semibold tracking-tight">{entry.title}</h2>
-                <span className="font-mono text-xs text-foreground-muted">{entry.period}</span>
+      <section aria-label="Research entries" className="mx-auto flex max-w-6xl flex-col gap-10 px-6 pb-24 sm:pb-32">
+        {research.map((entry) => (
+          <Reveal key={entry.slug}>
+            <div className="card glow relative overflow-hidden p-6 sm:p-10">
+              <div className="flex flex-wrap items-start justify-between gap-4">
+                <div>
+                  <p className={`${eyebrow} text-accent`}>{entry.period}</p>
+                  <h2 className="mt-3 text-3xl font-semibold tracking-tight">{entry.title}</h2>
+                </div>
+                <span className="inline-flex items-center gap-2 rounded-full border border-warning/40 px-3 py-1 font-mono text-[11px] text-warning">
+                  <span aria-hidden>●</span> Confidential
+                </span>
               </div>
-              <p className="mt-1 text-sm text-accent">
-                {entry.org} — {entry.location}
-              </p>
-              <p className="mt-1 font-mono text-xs uppercase tracking-widest text-foreground-muted">
-                {entry.area}
-              </p>
-              <p className="mt-4 max-w-2xl text-base leading-relaxed text-foreground/80">
-                {entry.description}
-              </p>
-              <ul className="mt-5 flex flex-wrap gap-2">
-                {entry.technologies.map((tech) => (
-                  <li key={tech}>
-                    <Badge>{tech}</Badge>
-                  </li>
-                ))}
-              </ul>
+
+              <div className="mt-8 grid gap-6 lg:grid-cols-[1.2fr_1fr]">
+                <InfoGrid
+                  items={[
+                    { label: "Organisation", value: entry.org, wide: true },
+                    { label: "Location", value: entry.location },
+                    { label: "Period", value: entry.period },
+                    { label: "Area", value: entry.area },
+                    { label: "Details", value: entry.description },
+                  ]}
+                />
+                <div className="card p-6">
+                  <h3 className={`${eyebrow} text-foreground-muted`}>Tools in use</h3>
+                  <ul className="mt-4 flex flex-wrap gap-1.5">
+                    {entry.technologies.map((tech) => (
+                      <li key={tech}>
+                        <Badge>{tech}</Badge>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
           </Reveal>
         ))}
-      </div>
-    </div>
+
+        <Reveal>
+          <div className="card flex items-start gap-3 px-5 py-4">
+            <span className="status-dot mt-1.5 shrink-0" />
+            <p className="font-mono text-xs leading-relaxed text-foreground/70 sm:text-sm">
+              <span className="text-accent">Now —</span> {siteConfig.now}
+            </p>
+          </div>
+        </Reveal>
+      </section>
+    </>
   );
 }

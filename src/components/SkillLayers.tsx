@@ -16,7 +16,7 @@ export function SkillLayers({ layers }: Props) {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <div className="flex flex-col divide-y divide-black/10 border-y border-black/10 dark:divide-white/10 dark:border-white/10">
+    <div className="flex flex-col divide-y divide-line border-y border-line">
       {layers.map((layer, i) => {
         const isOpen = openIndex === i;
         return (
