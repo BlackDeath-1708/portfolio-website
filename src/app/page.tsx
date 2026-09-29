@@ -79,7 +79,7 @@ export default function Home() {
         </ScrollFade>
       </section>
 
-      <section className="relative z-10 border-b border-black/10 bg-background dark:border-white/10">
+      <section className="relative z-10 border-b border-black/10 bg-background/70 backdrop-blur-sm dark:border-white/10">
         <div className="mx-auto grid max-w-5xl grid-cols-2 divide-x divide-y divide-black/10 px-6 sm:grid-cols-4 sm:divide-y-0 dark:divide-white/10">
           {stats.map((stat) => (
             <div key={stat.label} className="py-8 text-center sm:text-left sm:px-2">

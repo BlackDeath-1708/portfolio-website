@@ -18,7 +18,7 @@ const skillLayers = Object.entries(skills).map(([label, items]) => ({ label, ite
 
 export default function AboutPage() {
   return (
-    <div data-theme="dark" className="bg-background">
+    <div data-theme="dark">
       <section className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 py-24">
         <Image
           src="/about-hero-bg.jpg"

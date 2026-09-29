@@ -8,12 +8,11 @@ import gsap from "gsap";
 import { Magnetic } from "@/components/Magnetic";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { siteConfig } from "@/lib/site-config";
-
-const FORCED_DARK_ROUTES = new Set(["/about"]);
+import { isForcedDarkRoute } from "@/lib/theme-routes";
 
 export function Nav() {
   const pathname = usePathname();
-  const forceDark = FORCED_DARK_ROUTES.has(pathname);
+  const forceDark = isForcedDarkRoute(pathname);
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);

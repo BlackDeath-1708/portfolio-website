@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { NetworkBackground } from "@/components/background/NetworkBackground";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Script id="theme-init" strategy="beforeInteractive">
           {`(function(){try{var t=localStorage.getItem("theme");document.documentElement.dataset.theme=(t==="light")?"light":"dark";}catch(e){}})();`}
         </Script>
+        <NetworkBackground />
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
