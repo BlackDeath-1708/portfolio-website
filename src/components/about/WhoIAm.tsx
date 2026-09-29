@@ -21,16 +21,16 @@ export function WhoIAm() {
       </Reveal>
       <div className="mt-10 grid gap-8 lg:grid-cols-[1.4fr_1fr]">
         <Reveal>
-          <div className="mb-8 flex items-center gap-4">
+          <div className="mb-8 flex items-center gap-5">
             <Image
               src={siteConfig.avatarUrl}
               alt={`Photo of ${siteConfig.name}`}
-              width={72}
-              height={72}
-              className="h-[72px] w-[72px] rounded-full object-cover ring-2 ring-accent/40 ring-offset-2 ring-offset-background"
+              width={96}
+              height={96}
+              className="h-24 w-24 rounded-full object-cover ring-2 ring-accent/40 ring-offset-4 ring-offset-background"
             />
             <div>
-              <p className="font-semibold">{siteConfig.name}</p>
+              <p className="text-lg font-semibold">{siteConfig.name}</p>
               <p className={`${eyebrow} mt-1 text-foreground-muted`}>{siteConfig.positioning}</p>
             </div>
           </div>
