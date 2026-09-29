@@ -34,7 +34,7 @@ export type HeroCallout = {
 export const heroCallouts: HeroCallout[] = [
   { label: "Network security", meta: "Zeek · Kafka · ML detectors", tone: "accent", position: "top-[15%] right-[6%]" },
   { label: "Kernel security", meta: "eBPF · XDP · BPF-LSM", tone: "violet", tag: "building", position: "top-[41%] right-[3%]" },
-  { label: "Software", meta: "Python · Django · React", tone: "success", position: "bottom-[29%] right-[24%]" },
+  { label: "Software", meta: "MERN · Java · C · Python", tone: "success", position: "bottom-[29%] right-[24%]" },
 ];
 
 export const identity = [
