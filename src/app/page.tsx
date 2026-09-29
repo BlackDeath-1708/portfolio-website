@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FeaturedWork } from "@/components/home/FeaturedWork";
 import { Hero } from "@/components/home/Hero";
+import { OdinShowcase } from "@/components/home/OdinShowcase";
 import { Reveal } from "@/components/Reveal";
 import { posts } from "@/lib/writing";
 
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
 
       <FeaturedWork />
+      <OdinShowcase />
 
       <section className="mx-auto max-w-5xl border-t border-black/10 px-6 py-20 dark:border-white/10">
         <Reveal>
