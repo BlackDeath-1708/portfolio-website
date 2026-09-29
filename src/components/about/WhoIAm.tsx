@@ -23,10 +23,11 @@ export function WhoIAm() {
         <Reveal>
           <div className="mb-8 flex items-center gap-5">
             <Image
-              src={siteConfig.avatarUrl}
+              src="/portrait.jpg"
               alt={`Photo of ${siteConfig.name}`}
               width={96}
               height={96}
+              quality={90}
               className="h-24 w-24 rounded-full object-cover ring-2 ring-accent/40 ring-offset-4 ring-offset-background"
             />
             <div>

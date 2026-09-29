@@ -30,6 +30,10 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  images: {
+    // 90 is used only for the small About portrait, where 75 visibly softens the face.
+    qualities: [75, 90],
+  },
   async redirects() {
     return [
       { source: "/projects", destination: "/work", permanent: true },
