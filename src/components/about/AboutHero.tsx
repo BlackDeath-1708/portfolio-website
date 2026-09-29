@@ -4,35 +4,55 @@ import { Magnetic } from "@/components/Magnetic";
 import { Reveal } from "@/components/Reveal";
 import { SplitReveal } from "@/components/SplitReveal";
 import { buttonPrimary, buttonSecondary, eyebrow } from "@/components/ui/styles";
-import { aboutHero, aboutStats, heroCallouts, identity } from "@/lib/about-content";
+import { aboutHero, aboutStats, heroAnnotations, identity } from "@/lib/about-content";
 import { siteConfig } from "@/lib/site-config";
 
 const HEADLINE = "I build at the intersection of security, systems and software.";
 const HIGHLIGHTS = { security: "text-accent", systems: "text-accent", software: "text-violet" };
 const IMAGE_ALT = "Illustration of Sudhareshan working at a laptop";
 
-const DOT_TONES = { accent: "bg-accent", violet: "bg-violet", success: "bg-success" } as const;
-const CALLOUT_DELAY_MS = 180;
+const TONE_VARS = { accent: "var(--accent)", violet: "var(--violet)", success: "var(--success)" } as const;
+/** Left edge (% of the backdrop) of the label column the hairlines run to. */
+const LABEL_COLUMN = 76;
+const START_DELAY_MS = 600;
+const STAGGER_MS = 180;
 
-/** Floating glass labels pinned to the illustration's empty areas. */
-function HeroCallouts() {
+/**
+ * Engineering-drawing annotations: an anchor dot on an object in the scene,
+ * a hairline that draws out to a right-hand label column, then the label.
+ */
+function HeroAnnotations() {
   return (
     <>
-      {heroCallouts.map((callout, i) => (
-        <div
-          key={callout.label}
-          className={`absolute ${callout.position} animate-[callout-in_0.8s_cubic-bezier(0.16,1,0.3,1)_both] motion-reduce:animate-none`}
-          style={{ animationDelay: `${600 + i * CALLOUT_DELAY_MS}ms` }}
-        >
-          <div
-            className="glass float-slow flex items-center gap-2.5 rounded-full py-2 pr-4 pl-3 shadow-xl shadow-black/25"
-            style={{ animationDelay: `${i * -1.7}s` }}
-          >
-            <span className={`h-1.5 w-1.5 rounded-full ${DOT_TONES[callout.tone]} shadow-[0_0_8px_currentColor]`} />
-            <span className="text-sm font-medium text-foreground">{callout.label}</span>
+      {heroAnnotations.map((note, i) => {
+        const color = TONE_VARS[note.tone];
+        const top = `${note.y}%`;
+        const delay = START_DELAY_MS + i * STAGGER_MS;
+        return (
+          <div key={note.label}>
+            <span
+              className="annotate-fade absolute -mt-[5px] -ml-[5px] h-2.5 w-2.5 rounded-full border-[1.5px] bg-background/60"
+              style={{ left: `${note.x}%`, top, borderColor: color, boxShadow: `0 0 10px ${color}`, animationDelay: `${delay}ms` }}
+            />
+            <span
+              className="annotate-line absolute h-px"
+              style={{
+                left: `calc(${note.x}% + 6px)`,
+                top,
+                width: `calc(${LABEL_COLUMN - note.x}% - 12px)`,
+                background: `linear-gradient(to right, ${color}, color-mix(in srgb, ${color} 30%, transparent))`,
+                animationDelay: `${delay + 150}ms`,
+              }}
+            />
+            <span
+              className="annotate-fade absolute -translate-y-1/2 font-mono text-[11px] tracking-[0.16em] whitespace-nowrap text-foreground uppercase [text-shadow:0_1px_10px_var(--background)]"
+              style={{ left: `${LABEL_COLUMN}%`, top, animationDelay: `${delay + 500}ms` }}
+            >
+              {note.label}
+            </span>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </>
   );
 }
@@ -56,7 +76,7 @@ function DesktopBackdrop() {
             "linear-gradient(to right, var(--background) 0%, color-mix(in srgb, var(--background) 70%, transparent) 25%, transparent 60%), linear-gradient(to top, var(--background) 0%, transparent 35%)",
         }}
       />
-      <HeroCallouts />
+      <HeroAnnotations />
     </div>
   );
 }

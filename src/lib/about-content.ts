@@ -21,18 +21,19 @@ export const aboutStats: Stat[] = [
   { value: siteConfig.education.graduation, label: "Graduation" },
 ];
 
-export type HeroCallout = {
+export type HeroAnnotation = {
   label: string;
   tone: "accent" | "violet" | "success";
-  /** Position within the hero backdrop, chosen to sit in the image's empty areas. */
-  position: string;
+  /** Anchor point on the hero illustration, in % of the backdrop — placed on scenery, never the face. */
+  x: number;
+  y: number;
 };
 
-export const heroCallouts: HeroCallout[] = [
-  { label: "Network Security", tone: "accent", position: "top-[15%] right-[8%]" },
-  { label: "Software Security", tone: "violet", position: "top-[31%] right-[3%]" },
-  { label: "Development", tone: "success", position: "top-[47%] right-[7%]" },
-  { label: "Research", tone: "accent", position: "bottom-[29%] right-[27%]" },
+export const heroAnnotations: HeroAnnotation[] = [
+  { label: "Network Security", tone: "accent", x: 63, y: 19 },
+  { label: "Software Security", tone: "violet", x: 66, y: 38 },
+  { label: "Development", tone: "success", x: 60, y: 58 },
+  { label: "Research", tone: "accent", x: 67, y: 70 },
 ];
 
 export const identity = [
