@@ -1,4 +1,5 @@
 import Image from "next/image";
+import portrait from "@/assets/portrait.jpg";
 import { AboutIcon, type AboutIconName } from "@/components/about/icons";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -23,7 +24,8 @@ export function WhoIAm() {
         <Reveal>
           <div className="mb-8 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-6">
             <Image
-              src="/portrait.jpg"
+              src={portrait}
+              placeholder="blur"
               alt={`Photo of ${siteConfig.name}`}
               width={144}
               height={144}
