@@ -88,7 +88,7 @@ const hasWriting2026 = posts.some((post) => post.date.startsWith("2026"));
 export const timeline: Milestone[] = [
   { year: String(graduationYear - 4), items: ["Started B.E. Computer Science (Cyber Security)"] },
   { year: "2024", items: ["Winner — Pitch Perfect, Anokha 2024"] },
-  { year: "2025", items: ["Co-Founder & CTO, XecureOne"] },
+  { year: "2025", items: ["Co-Founder & CTO, XecureOne (May–Nov)"] },
   {
     year: "2026",
     items: ["Research Intern, CAIR · DRDO", ...(hasWriting2026 ? ["Technical writing"] : [])],
