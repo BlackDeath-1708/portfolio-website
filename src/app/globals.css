@@ -64,9 +64,12 @@ body {
   position: relative;
 }
 
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+/* In the base layer so utilities (e.g. outline-none on a stretched link) can override it. */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
 }
 
 /* Surfaces. `.card` is the default bordered panel; `.glass` adds blur and is

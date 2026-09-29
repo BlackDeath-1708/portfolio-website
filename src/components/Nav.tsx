@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import gsap from "gsap";
+import { Terminal } from "@/components/terminal/Terminal";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useIsClient } from "@/hooks/useIsClient";
 import { siteConfig } from "@/lib/site-config";
@@ -113,6 +114,7 @@ export function Nav() {
         </nav>
 
         <div className="flex items-center gap-1">
+          <Terminal />
           <ThemeToggle />
           <button
             type="button"
