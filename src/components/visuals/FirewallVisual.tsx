@@ -30,7 +30,7 @@ export function FirewallVisual() {
               <span className="font-mono text-[9px] text-foreground-muted">{stage.detail}</span>
             </div>
             {i < STAGES.length - 1 && (
-              <svg viewBox="0 0 24 4" className="-mt-9 h-1 w-6 shrink-0">
+              <svg viewBox="0 0 24 4" className="-mt-9 h-1 w-4 shrink-0 sm:w-6">
                 <line x1="0" y1="2" x2="24" y2="2" className="flow-line stroke-accent" strokeWidth="1.5" />
               </svg>
             )}

@@ -77,14 +77,13 @@ export function Nav() {
       >
         <Link
           href="/"
-          aria-label={`${siteConfig.name}, home`}
           onClick={() => setIsOpen(false)}
           className="flex items-center gap-2.5 rounded-full pr-3"
         >
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground/[0.07] font-mono text-[11px] font-semibold tracking-tight">
             SV
           </span>
-          <span className="hidden text-sm font-medium lg:inline">{siteConfig.name}</span>
+          <span className="sr-only lg:not-sr-only lg:text-sm lg:font-medium">{siteConfig.name}</span>
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-0.5 sm:flex">

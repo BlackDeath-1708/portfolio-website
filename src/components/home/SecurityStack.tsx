@@ -23,11 +23,11 @@ export function SecurityStack() {
           <Reveal key={category.label} delay={i * 70}>
             <div className="card h-full p-5">
               <h3 className={`${eyebrow} font-semibold text-accent`}>{category.label}</h3>
-              <ul className="mt-5 flex flex-wrap gap-2">
+              <ul className="relative mt-5 flex flex-wrap gap-2">
                 {category.tools.map((tool) => {
                   const tipId = `tip-${slug(category.label)}-${slug(tool.name)}`;
                   return (
-                    <li key={tool.name} className="group relative">
+                    <li key={tool.name} className="group">
                       <button
                         type="button"
                         aria-describedby={tipId}
@@ -38,7 +38,7 @@ export function SecurityStack() {
                       <span
                         id={tipId}
                         role="tooltip"
-                        className="pointer-events-none absolute bottom-full left-0 z-20 mb-2 w-56 rounded-lg border border-line bg-surface px-3 py-2 text-xs leading-snug text-foreground/80 opacity-0 shadow-xl transition-opacity duration-200 group-focus-within:opacity-100 group-hover:opacity-100"
+                        className="pointer-events-none absolute inset-x-0 bottom-full z-20 mb-2 rounded-lg border border-line bg-surface px-3 py-2 text-xs leading-snug text-foreground/80 opacity-0 shadow-xl transition-opacity duration-200 group-focus-within:opacity-100 group-hover:opacity-100"
                       >
                         {tool.usedIn}
                       </span>

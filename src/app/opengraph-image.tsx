@@ -16,8 +16,8 @@ export default async function Image() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          background: "#050505",
-          color: "#f5f5f7",
+          background: "radial-gradient(60% 80% at 85% 20%, rgba(0,209,255,0.18), transparent 70%), radial-gradient(50% 70% at 15% 90%, rgba(124,58,237,0.18), transparent 70%), #050608",
+          color: "#f5f7fa",
           fontFamily: "sans-serif",
         }}
       >
@@ -27,7 +27,7 @@ export default async function Image() {
             fontSize: 32,
             letterSpacing: "0.2em",
             textTransform: "uppercase",
-            color: "#38bdf8",
+            color: "#00d1ff",
           }}
         >
           Cybersecurity × Software × Research
@@ -48,10 +48,10 @@ export default async function Image() {
             display: "flex",
             marginTop: 20,
             fontSize: 34,
-            color: "#a1a1a6",
+            color: "#8b929d",
           }}
         >
-          {siteConfig.title}
+          {siteConfig.headline}
         </div>
       </div>
     ),

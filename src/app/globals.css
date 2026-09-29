@@ -161,7 +161,9 @@ body::before {
   animation: status-pulse 2s ease-out infinite;
 }
 
+/* min-width: 0 lets Reveal-wrapped grid items shrink below their content width. */
 .reveal {
+  min-width: 0;
   opacity: 0;
   transform: translateY(28px) scale(0.97);
   transition:
