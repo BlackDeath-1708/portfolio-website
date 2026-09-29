@@ -78,7 +78,7 @@ body {
 }
 
 .glass {
-  background: color-mix(in srgb, var(--surface) 62%, transparent);
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
   border: 1px solid var(--line);
   backdrop-filter: blur(18px) saturate(1.4);
   -webkit-backdrop-filter: blur(18px) saturate(1.4);
@@ -171,6 +171,23 @@ body::before {
   transform: translateY(0) scale(1);
 }
 
+/* Packet flow along SVG strokes: dashes travel along the path. */
+.flow-line {
+  stroke-dasharray: 3 9;
+  animation: flow-dash 1.4s linear infinite;
+}
+
+.flow-line-slow {
+  stroke-dasharray: 2 14;
+  animation: flow-dash 2.8s linear infinite;
+}
+
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
 @keyframes status-pulse {
   0% {
     transform: scale(0.6);
@@ -183,6 +200,11 @@ body::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .flow-line,
+  .flow-line-slow {
+    animation: none;
+  }
+
   .reveal {
     opacity: 1;
     transform: none;

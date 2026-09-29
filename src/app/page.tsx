@@ -1,42 +1,15 @@
 import Link from "next/link";
+import { FeaturedWork } from "@/components/home/FeaturedWork";
 import { Hero } from "@/components/home/Hero";
-import { ProjectCard } from "@/components/ProjectCard";
 import { Reveal } from "@/components/Reveal";
-import { projects } from "@/lib/projects";
 import { posts } from "@/lib/writing";
 
 export default function Home() {
-  const highlights = projects.filter((project) => project.featured);
-
   return (
     <div>
       <Hero />
 
-      <section className="mx-auto max-w-5xl px-6 py-20">
-        <Reveal>
-          <div className="flex items-baseline justify-between gap-3">
-            <div className="flex items-baseline gap-3">
-              <span className="h-px w-8 bg-accent" />
-              <h2 className="font-mono text-xs uppercase tracking-widest text-foreground-muted">
-                Highlighted work
-              </h2>
-            </div>
-            <Link
-              href="/work"
-              className="font-mono text-xs uppercase tracking-widest text-foreground-muted transition-colors hover:text-accent"
-            >
-              View all →
-            </Link>
-          </div>
-        </Reveal>
-        <div className="mt-6">
-          {highlights.map((project, index) => (
-            <Reveal key={project.slug} delay={index * 60}>
-              <ProjectCard project={project} index={index} />
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      <FeaturedWork />
 
       <section className="mx-auto max-w-5xl border-t border-black/10 px-6 py-20 dark:border-white/10">
         <Reveal>
