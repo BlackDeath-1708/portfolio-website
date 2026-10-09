@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# personal files / design prompt packs
+Sudhareshan_V_Resume.pdf
+*_prompt_pack.zip
